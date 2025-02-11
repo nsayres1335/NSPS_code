@@ -1,0 +1,33 @@
+{
+    "id": "9323BD22",
+    "path": "C:/Users/NSayresm/OneDrive - Environmental Protection Agency (EPA)/ESG/NSPS_CTs/NSPS_code/qmd/EIS_ID.qmd",
+    "project_path": "qmd/EIS_ID.qmd",
+    "type": "quarto_markdown",
+    "hash": "3743612461",
+    "contents": "",
+    "dirty": false,
+    "created": 1737466675825.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "46,643",
+        "scrollLine": "39",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "103:0",
+        "docOutlineVisible": "1",
+        "chunk_output_type": "console"
+    },
+    "folds": "69|6|95|0|\n99|6|144|0|\n",
+    "lastKnownWriteTime": 1737990385,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1737990385335,
+    "read_only": false,
+    "read_only_alternatives": []
+}

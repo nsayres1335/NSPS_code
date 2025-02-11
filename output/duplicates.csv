@@ -1,0 +1,23 @@
+state,county,unit,plant_code_CAPD,plant_code_EIA,plant_code_NEEDS,plant_code_NESHAP,plant_name_CAPD,plant_name_EIA,plant_name_NEEDS,plant_name_NESHAP
+California,Los Angeles,1,315,62115,62115,NA,AES Alamitos,AES Alamitos Energy Center,AES Alamitos Energy Center,NA
+California,Los Angeles,2,315,62115,62115,NA,AES Alamitos,AES Alamitos Energy Center,AES Alamitos Energy Center,NA
+California,Los Angeles,3,315,62115,62115,NA,AES Alamitos,AES Alamitos Energy Center,AES Alamitos Energy Center,NA
+California,Orange,1,335,62116,62116,NA,AES Huntington Beach,AES Huntington Beach Energy Project,AES Huntington Beach Energy Project,NA
+California,Orange,2,335,62116,62116,NA,AES Huntington Beach,AES Huntington Beach Energy Project,AES Huntington Beach Energy Project,NA
+California,Orange,3,335,62116,62116,NA,AES Huntington Beach,AES Huntington Beach Energy Project,AES Huntington Beach Energy Project,NA
+Florida,Broward,1,613,65978,65978,NA,Lauderdale,Dania Beach 7,Dania Beach 7,Dania Beach (Part of Lauderdale Plant)
+Florida,Broward,2,613,65978,65978,NA,Lauderdale,Dania Beach 7,Dania Beach 7,Dania Beach (Part of Lauderdale Plant)
+Florida,Broward,3,613,65978,65978,NA,Lauderdale,Dania Beach 7,Dania Beach 7,NA
+Florida,Escambia,1,641,641,641,NA,Gulf Clean Energy Center,Gulf Clean Energy Center,Gulf Clean Energy Center,Gulf Clean Energy Center (formerly Plant Crist)
+Florida,Escambia,2,641,641,641,NA,Gulf Clean Energy Center,Gulf Clean Energy Center,Gulf Clean Energy Center,Gulf Clean Energy Center (formerly Plant Crist)
+Florida,Escambia,3,641,641,641,NA,Gulf Clean Energy Center,Gulf Clean Energy Center,Gulf Clean Energy Center,Gulf Clean Energy Center (formerly Plant Crist)
+Florida,Escambia,4,641,641,641,NA,Gulf Clean Energy Center,Gulf Clean Energy Center,Gulf Clean Energy Center,Gulf Clean Energy Center (formerly Plant Crist)
+Florida,Hillsborough,1,645,645,645,NA,Big Bend,Big Bend,Big Bend,Big Bend Station
+Florida,Hillsborough,2,645,645,645,NA,Big Bend,Big Bend,Big Bend,Big Bend Station
+Florida,Hillsborough,3,645,NA,NA,NA,Big Bend,NA,NA,NA
+Indiana,Tippecanoe,1,NA,64854,NA,NA,NA,Primient,NA,Primary Products Ingredients Americas
+Indiana,Tippecanoe,2,NA,64854,NA,NA,NA,Primient,NA,Primary Products Ingredients Americas
+Michigan,Washtenaw,1,NA,50431,50431,NA,NA,University of Michigan,University of Michigan,University of Michigan Central Power Plant
+Wisconsin,Rock,1,55641,64020,64020,NA,Riverside Energy Center,West Riverside Energy Center,West Riverside Energy Center,NA
+Wisconsin,Rock,2,55641,64020,64020,NA,Riverside Energy Center,West Riverside Energy Center,West Riverside Energy Center,NA
+Wisconsin,Rock,3,55641,64020,64020,NA,Riverside Energy Center,West Riverside Energy Center,West Riverside Energy Center,NA

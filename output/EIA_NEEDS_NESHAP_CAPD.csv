@@ -1,0 +1,406 @@
+plant_code,plant_name,state,county,unit,EIA,EIA_proposed,NEEDS,CAPD,NESHAP
+3,Barry,Alabama,Mobile,1,TRUE,FALSE,TRUE,TRUE,FALSE
+3,Barry,Alabama,Mobile,2,TRUE,FALSE,TRUE,TRUE,FALSE
+47,Colbert,Alabama,Colbert,1,TRUE,FALSE,FALSE,TRUE,FALSE
+47,Colbert,Alabama,Colbert,2,TRUE,FALSE,FALSE,TRUE,FALSE
+47,Colbert,Alabama,Colbert,3,TRUE,FALSE,FALSE,TRUE,FALSE
+56,Lowman Energy Center,Alabama,Washington,1,TRUE,FALSE,TRUE,TRUE,FALSE
+56,Lowman Energy Center,Alabama,Washington,2,TRUE,FALSE,TRUE,TRUE,FALSE
+116,Ocotillo,Arizona,Maricopa,1,TRUE,FALSE,TRUE,TRUE,FALSE
+116,Ocotillo,Arizona,Maricopa,2,TRUE,FALSE,TRUE,TRUE,FALSE
+116,Ocotillo,Arizona,Maricopa,3,TRUE,FALSE,TRUE,TRUE,FALSE
+116,Ocotillo,Arizona,Maricopa,4,TRUE,FALSE,TRUE,TRUE,FALSE
+116,Ocotillo,Arizona,Maricopa,5,TRUE,FALSE,TRUE,TRUE,FALSE
+136,Seminole (FL),Florida,Putnam,1,TRUE,FALSE,TRUE,TRUE,FALSE
+136,Seminole (FL),Florida,Putnam,2,TRUE,FALSE,TRUE,TRUE,FALSE
+136,Seminole (FL),Florida,Putnam,3,TRUE,FALSE,TRUE,TRUE,FALSE
+141,Agua Fria,Arizona,Maricopa,1,TRUE,FALSE,TRUE,TRUE,FALSE
+141,Agua Fria,Arizona,Maricopa,2,TRUE,FALSE,TRUE,TRUE,FALSE
+160,Apache Station,Arizona,Cochise,1,FALSE,TRUE,FALSE,FALSE,FALSE
+160,Apache Station,Arizona,Cochise,2,FALSE,TRUE,FALSE,FALSE,FALSE
+165,GREC,Oklahoma,Mayes,1,FALSE,TRUE,FALSE,FALSE,FALSE
+315,AES Alamitos,California,Los Angeles,1,FALSE,FALSE,FALSE,TRUE,FALSE
+315,AES Alamitos,California,Los Angeles,2,FALSE,FALSE,FALSE,TRUE,FALSE
+315,AES Alamitos,California,Los Angeles,3,FALSE,FALSE,FALSE,TRUE,FALSE
+335,AES Huntington Beach,California,Orange,1,FALSE,FALSE,FALSE,TRUE,FALSE
+335,AES Huntington Beach,California,Orange,2,FALSE,FALSE,FALSE,TRUE,FALSE
+335,AES Huntington Beach,California,Orange,3,FALSE,FALSE,FALSE,TRUE,FALSE
+492,South Plant,Colorado,El Paso,1,TRUE,FALSE,TRUE,TRUE,FALSE
+492,South Plant,Colorado,El Paso,2,TRUE,FALSE,TRUE,TRUE,FALSE
+492,South Plant,Colorado,El Paso,3,TRUE,FALSE,TRUE,TRUE,FALSE
+492,South Plant,Colorado,El Paso,4,TRUE,FALSE,TRUE,TRUE,FALSE
+492,South Plant,Colorado,El Paso,5,TRUE,FALSE,TRUE,TRUE,FALSE
+492,South Plant,Colorado,El Paso,6,TRUE,FALSE,TRUE,TRUE,FALSE
+568,Bridgeport Station,Connecticut,Fairfield,1,TRUE,FALSE,TRUE,TRUE,TRUE
+568,Bridgeport Station,Connecticut,Fairfield,2,TRUE,FALSE,TRUE,TRUE,FALSE
+613,Lauderdale,Florida,Broward,1,FALSE,FALSE,FALSE,TRUE,FALSE
+613,Lauderdale,Florida,Broward,2,FALSE,FALSE,FALSE,TRUE,FALSE
+613,Lauderdale,Florida,Broward,3,FALSE,FALSE,FALSE,TRUE,FALSE
+641,Gulf Clean Energy Center,Florida,Escambia,1,TRUE,FALSE,TRUE,TRUE,FALSE
+641,Gulf Clean Energy Center,Florida,Escambia,2,TRUE,FALSE,TRUE,TRUE,FALSE
+641,Gulf Clean Energy Center,Florida,Escambia,3,TRUE,FALSE,TRUE,TRUE,FALSE
+641,Gulf Clean Energy Center,Florida,Escambia,4,TRUE,FALSE,TRUE,TRUE,FALSE
+645,Big Bend,Florida,Hillsborough,1,TRUE,FALSE,TRUE,TRUE,FALSE
+645,Big Bend,Florida,Hillsborough,2,TRUE,FALSE,TRUE,TRUE,FALSE
+645,Big Bend,Florida,Hillsborough,3,FALSE,FALSE,FALSE,TRUE,FALSE
+664,John R Kelly,Florida,Alachua,1,TRUE,FALSE,TRUE,FALSE,FALSE
+676,C D McIntosh Jr,Florida,Polk,1,TRUE,FALSE,TRUE,TRUE,FALSE
+728,Yates,Georgia,Coweta,1,FALSE,TRUE,FALSE,FALSE,FALSE
+728,Yates,Georgia,Coweta,2,FALSE,TRUE,FALSE,FALSE,FALSE
+728,Yates,Georgia,Coweta,3,FALSE,TRUE,FALSE,FALSE,FALSE
+753,Crisp Plant,Georgia,Worth,1,TRUE,FALSE,FALSE,FALSE,FALSE
+1024,Crawfordsville Power Plant,Indiana,Montgomery,1,FALSE,TRUE,FALSE,FALSE,FALSE
+1378,Paradise,Kentucky,Muhlenberg,1,TRUE,FALSE,FALSE,FALSE,FALSE
+1378,Paradise,Kentucky,Muhlenberg,2,TRUE,FALSE,FALSE,FALSE,FALSE
+1378,Paradise,Kentucky,Muhlenberg,3,TRUE,FALSE,FALSE,FALSE,FALSE
+1599,Canal,Massachusetts,Barnstable,1,TRUE,FALSE,TRUE,TRUE,FALSE
+1615,Nantucket Hybrid,Massachusetts,Nantucket,1,TRUE,FALSE,TRUE,FALSE,FALSE
+2678,Plant No 1 Freeport,New York,Nassau,1,FALSE,FALSE,TRUE,FALSE,FALSE
+2706,Asheville,North Carolina,Buncombe,1,TRUE,FALSE,TRUE,TRUE,FALSE
+2706,Asheville,North Carolina,Buncombe,2,TRUE,FALSE,TRUE,TRUE,FALSE
+2706,Asheville,North Carolina,Buncombe,3,TRUE,FALSE,TRUE,TRUE,FALSE
+2706,Asheville,North Carolina,Buncombe,4,TRUE,FALSE,TRUE,TRUE,FALSE
+2790,R M Heskett,North Dakota,Morton,1,FALSE,TRUE,TRUE,FALSE,FALSE
+2951,Horseshoe Lake,Oklahoma,Oklahoma,1,FALSE,TRUE,FALSE,FALSE,FALSE
+2951,Horseshoe Lake,Oklahoma,Oklahoma,2,FALSE,TRUE,FALSE,FALSE,FALSE
+3291,Parr GT,South Carolina,Fairfield,1,FALSE,TRUE,FALSE,FALSE,FALSE
+3291,Parr GT,South Carolina,Fairfield,2,FALSE,TRUE,FALSE,FALSE,FALSE
+3456,Newman,Texas,El Paso,1,TRUE,FALSE,FALSE,FALSE,FALSE
+6061,R D Morrow,Mississippi,Lamar,1,TRUE,FALSE,TRUE,TRUE,FALSE
+6061,R D Morrow,Mississippi,Lamar,2,TRUE,FALSE,FALSE,TRUE,FALSE
+6137,A B Brown,Indiana,Posey,1,FALSE,TRUE,FALSE,FALSE,FALSE
+6137,A B Brown,Indiana,Posey,2,FALSE,TRUE,FALSE,FALSE,FALSE
+6481,Intermountain Power Project,Utah,Millard,1,FALSE,TRUE,FALSE,FALSE,FALSE
+6481,Intermountain Power Project,Utah,Millard,2,FALSE,TRUE,FALSE,FALSE,FALSE
+6761,Rawhide,Colorado,Larimer,1,FALSE,TRUE,FALSE,FALSE,FALSE
+6761,Rawhide,Colorado,Larimer,2,FALSE,TRUE,FALSE,FALSE,FALSE
+7277,Lincoln Combustion,North Carolina,Lincoln,1,FALSE,TRUE,FALSE,TRUE,FALSE
+10025,"RED-Rochester, LLC",New York,Monroe,1,FALSE,TRUE,FALSE,FALSE,FALSE
+10154,Power Island,Texas,Brazoria,1,TRUE,FALSE,TRUE,FALSE,FALSE
+10154,Power Island,Texas,Brazoria,2,TRUE,FALSE,TRUE,FALSE,FALSE
+10319,Geismar,Louisiana,Ascension,1,FALSE,TRUE,FALSE,FALSE,FALSE
+10350,Greenleaf 1,California,Sutter,1,TRUE,FALSE,TRUE,TRUE,FALSE
+10350,Greenleaf 1,California,Sutter,2,TRUE,FALSE,TRUE,TRUE,FALSE
+10427,New-Indy Ontario Mill,California,San Bernardino,1,TRUE,FALSE,TRUE,FALSE,FALSE
+10427,New-Indy Ontario Mill,California,San Bernardino,2,TRUE,FALSE,TRUE,FALSE,FALSE
+10554,Formosa Utility Venture Ltd,Texas,Calhoun,1,TRUE,FALSE,FALSE,FALSE,FALSE
+10554,Formosa Utility Venture Ltd,Texas,Calhoun,2,TRUE,FALSE,FALSE,FALSE,FALSE
+10554,Formosa Utility Venture Ltd,Texas,Calhoun,3,TRUE,FALSE,FALSE,FALSE,FALSE
+50366,University of Notre Dame,Indiana,St Joseph,1,TRUE,FALSE,TRUE,FALSE,FALSE
+50366,University of Notre Dame,Indiana,St Joseph,2,TRUE,FALSE,TRUE,FALSE,FALSE
+50410,Chester Operations,Pennsylvania,Delaware,1,TRUE,FALSE,TRUE,FALSE,FALSE
+50410,Chester Operations,Pennsylvania,Delaware,2,TRUE,FALSE,TRUE,FALSE,FALSE
+50410,Chester Operations,Pennsylvania,Delaware,3,TRUE,FALSE,TRUE,FALSE,FALSE
+50410,Chester Operations,Pennsylvania,Delaware,4,TRUE,FALSE,TRUE,FALSE,FALSE
+50431,University of Michigan,Michigan,Washtenaw,1,TRUE,FALSE,TRUE,FALSE,FALSE
+50936,Winnebago County Landfill Gas,Wisconsin,Winnebago,1,FALSE,FALSE,TRUE,FALSE,FALSE
+52061,Hartford Hospital Cogeneration,Connecticut,Hartford,1,FALSE,TRUE,FALSE,FALSE,FALSE
+54091,Mansfield Mill,Louisiana,DeSoto,1,TRUE,FALSE,FALSE,FALSE,FALSE
+54224,Franklin Heating Station,Minnesota,Olmsted,1,FALSE,TRUE,FALSE,FALSE,FALSE
+54327,Toyon Power Station,California,Los Angeles,1,FALSE,FALSE,TRUE,FALSE,FALSE
+54907,Mass Inst Tech Cntrl Utilities/Cogen Plt,Massachusetts,Middlesex,1,TRUE,FALSE,FALSE,FALSE,FALSE
+54907,Mass Inst Tech Cntrl Utilities/Cogen Plt,Massachusetts,Middlesex,2,TRUE,FALSE,FALSE,FALSE,FALSE
+55129,Desert Basin,Arizona,Pinal,1,TRUE,FALSE,TRUE,TRUE,FALSE
+55129,Desert Basin,Arizona,Pinal,2,TRUE,FALSE,TRUE,TRUE,FALSE
+55153,Guadalupe Generating Station,Texas,Guadalupe,1,FALSE,TRUE,FALSE,FALSE,FALSE
+55153,Guadalupe Generating Station,Texas,Guadalupe,2,FALSE,TRUE,FALSE,FALSE,FALSE
+55218,Hinds Energy Facility,Mississippi,Hinds,1,TRUE,FALSE,TRUE,TRUE,FALSE
+55419,Plaquemine Cogeneration Plant,Louisiana,Iberville,1,FALSE,TRUE,FALSE,FALSE,FALSE
+55419,Plaquemine Cogeneration Plant,Louisiana,Iberville,2,FALSE,TRUE,FALSE,FALSE,FALSE
+55460,Indeck Niles Energy Center,Michigan,Cass,1,TRUE,FALSE,TRUE,TRUE,FALSE
+55460,Indeck Niles Energy Center,Michigan,Cass,2,TRUE,FALSE,TRUE,TRUE,FALSE
+55460,Indeck Niles Energy Center,Michigan,Cass,3,TRUE,FALSE,TRUE,TRUE,FALSE
+55486,Washington Parish Energy Center,Louisiana,Washington,1,TRUE,FALSE,TRUE,TRUE,FALSE
+55486,Washington Parish Energy Center,Louisiana,Washington,2,TRUE,FALSE,TRUE,TRUE,FALSE
+55524,York Energy Center,Pennsylvania,York,1,TRUE,FALSE,TRUE,FALSE,FALSE
+55524,York Energy Center,Pennsylvania,York,2,TRUE,FALSE,TRUE,FALSE,FALSE
+55524,York Energy Center,Pennsylvania,York,3,TRUE,FALSE,TRUE,FALSE,FALSE
+55641,Riverside Energy Center,Wisconsin,Rock,1,FALSE,FALSE,FALSE,TRUE,FALSE
+55641,Riverside Energy Center,Wisconsin,Rock,2,FALSE,FALSE,FALSE,TRUE,FALSE
+55641,Riverside Energy Center,Wisconsin,Rock,3,FALSE,FALSE,FALSE,TRUE,FALSE
+55841,Silverhawk,Nevada,Clark,1,FALSE,TRUE,FALSE,FALSE,FALSE
+55841,Silverhawk,Nevada,Clark,2,FALSE,TRUE,FALSE,FALSE,FALSE
+56090,Blacksand Generating Facility,California,Orange,1,FALSE,TRUE,FALSE,FALSE,FALSE
+56090,Blacksand Generating Facility,California,Orange,2,FALSE,TRUE,FALSE,FALSE,FALSE
+56104,Mankato Energy Center,Minnesota,Blue Earth,1,TRUE,FALSE,TRUE,TRUE,FALSE
+56104,Mankato Energy Center,Minnesota,Blue Earth,2,FALSE,FALSE,FALSE,TRUE,FALSE
+56298,Roseville Energy Park,California,Placer,1,TRUE,FALSE,TRUE,TRUE,FALSE
+56298,Roseville Energy Park,California,Placer,2,TRUE,FALSE,TRUE,TRUE,FALSE
+56350,Colorado Bend Energy Center,Texas,Wharton,1,TRUE,FALSE,TRUE,TRUE,FALSE
+56350,Colorado Bend Energy Center,Texas,Wharton,2,TRUE,FALSE,TRUE,TRUE,FALSE
+56571,Eastern Landfill Gas LLC,Maryland,Baltimore,1,FALSE,FALSE,TRUE,FALSE,FALSE
+57185,Cricket Valley Energy,New York,Dutchess,1,TRUE,FALSE,TRUE,TRUE,FALSE
+57185,Cricket Valley Energy,New York,Dutchess,2,TRUE,FALSE,TRUE,TRUE,FALSE
+57185,Cricket Valley Energy,New York,Dutchess,3,TRUE,FALSE,TRUE,TRUE,FALSE
+57185,Cricket Valley Energy,New York,Dutchess,4,TRUE,FALSE,TRUE,TRUE,FALSE
+57185,Cricket Valley Energy,New York,Dutchess,5,TRUE,FALSE,TRUE,TRUE,FALSE
+57185,Cricket Valley Energy,New York,Dutchess,6,TRUE,FALSE,TRUE,TRUE,FALSE
+57472,TBE-Montgomery LLC,New York,Orange,1,FALSE,TRUE,FALSE,FALSE,FALSE
+57472,TBE-Montgomery LLC,New York,Orange,2,FALSE,TRUE,FALSE,FALSE,FALSE
+57504,TECO CHP-1,Texas,Harris,1,FALSE,TRUE,FALSE,FALSE,FALSE
+57828,Tulsa LFG LLC,Oklahoma,Osage,1,FALSE,FALSE,TRUE,FALSE,FALSE
+57881,Pioneer Generation Station,North Dakota,Williams,1,FALSE,TRUE,FALSE,FALSE,FALSE
+57881,Pioneer Generation Station,North Dakota,Williams,2,FALSE,TRUE,FALSE,FALSE,FALSE
+57943,Lonesome Creek Station,North Dakota,McKenzie,1,TRUE,FALSE,TRUE,TRUE,FALSE
+58151,Central Utility Plant - Texas A&M,Texas,Brazos,1,FALSE,TRUE,FALSE,FALSE,FALSE
+58168,Energy Center,California,San Bernardino,1,TRUE,FALSE,FALSE,FALSE,FALSE
+58168,Energy Center,California,San Bernardino,2,TRUE,FALSE,FALSE,FALSE,FALSE
+58168,Energy Center,California,San Bernardino,3,TRUE,FALSE,FALSE,FALSE,FALSE
+58194,West Campus Steam Plant,Pennsylvania,Centre,1,TRUE,FALSE,FALSE,FALSE,FALSE
+58199,Arizona State University CHP,Arizona,Maricopa,1,TRUE,FALSE,FALSE,FALSE,FALSE
+58413,Copper Crossing Energy and Research Center,Arizona,Pinal,1,FALSE,TRUE,FALSE,FALSE,FALSE
+58413,Copper Crossing Energy and Research Center,Arizona,Pinal,2,FALSE,TRUE,FALSE,FALSE,FALSE
+58546,Watervliet,Michigan,Berrien,1,FALSE,FALSE,TRUE,FALSE,FALSE
+58930,FGE Texas II,Texas,Mitchell,1,FALSE,TRUE,FALSE,FALSE,FALSE
+58930,FGE Texas II,Texas,Mitchell,2,FALSE,TRUE,FALSE,FALSE,FALSE
+58930,FGE Texas II,Texas,Mitchell,3,FALSE,TRUE,FALSE,FALSE,FALSE
+58931,FGE Texas I,Texas,Mitchell,1,FALSE,TRUE,FALSE,FALSE,FALSE
+58931,FGE Texas I,Texas,Mitchell,2,FALSE,TRUE,FALSE,FALSE,FALSE
+58931,FGE Texas I,Texas,Mitchell,3,FALSE,TRUE,FALSE,FALSE,FALSE
+58933,Shell Chemical Appalachia LLC,Pennsylvania,Beaver,1,TRUE,FALSE,TRUE,TRUE,FALSE
+58933,Shell Chemical Appalachia LLC,Pennsylvania,Beaver,2,TRUE,FALSE,TRUE,TRUE,FALSE
+58933,Shell Chemical Appalachia LLC,Pennsylvania,Beaver,3,TRUE,FALSE,TRUE,TRUE,FALSE
+58933,Shell Chemical Appalachia LLC,Pennsylvania,Beaver,4,TRUE,FALSE,TRUE,TRUE,FALSE
+58933,Shell Chemical Appalachia LLC,Pennsylvania,Beaver,5,TRUE,FALSE,TRUE,TRUE,FALSE
+58947,Bristol Myers Squibb Lawrenceville,New Jersey,Mercer,1,TRUE,FALSE,TRUE,FALSE,FALSE
+59145,Freeport LP Pretreatment Facility,Texas,Brazoria,1,TRUE,FALSE,TRUE,FALSE,FALSE
+59335,MCLB Landfill Gas to Energy,Georgia,Dougherty,1,FALSE,FALSE,TRUE,FALSE,FALSE
+59425,Zimmerman Energy,Indiana,Marshall,1,FALSE,FALSE,TRUE,FALSE,FALSE
+59453,Albany Medical Ctr Cogen Plant,New York,Albany,1,TRUE,FALSE,FALSE,FALSE,FALSE
+59529,Bannock County LFG to Energy,Idaho,Bannock,1,FALSE,FALSE,TRUE,FALSE,FALSE
+59686,Sarasota County LFGTE Facility,Florida,Sarasota,1,FALSE,FALSE,TRUE,FALSE,FALSE
+59688,Wake County LFG Facility,North Carolina,Wake,1,FALSE,FALSE,TRUE,FALSE,FALSE
+59688,Wake County LFG Facility,North Carolina,Wake,2,FALSE,FALSE,TRUE,FALSE,FALSE
+59688,Wake County LFG Facility,North Carolina,Wake,3,FALSE,FALSE,TRUE,FALSE,FALSE
+59688,Wake County LFG Facility,North Carolina,Wake,4,FALSE,FALSE,TRUE,FALSE,FALSE
+59688,Wake County LFG Facility,North Carolina,Wake,5,FALSE,FALSE,TRUE,FALSE,FALSE
+59688,Wake County LFG Facility,North Carolina,Wake,6,FALSE,FALSE,TRUE,FALSE,FALSE
+59882,Exelon West Medway II LLC,Massachusetts,Norfolk,1,TRUE,FALSE,TRUE,TRUE,FALSE
+59882,Exelon West Medway II LLC,Massachusetts,Norfolk,2,TRUE,FALSE,TRUE,TRUE,FALSE
+59924,Aegle Power,Texas,Cameron,1,FALSE,TRUE,FALSE,FALSE,FALSE
+59924,Aegle Power,Texas,Cameron,2,FALSE,TRUE,FALSE,FALSE,FALSE
+59924,Aegle Power,Texas,Cameron,3,FALSE,TRUE,FALSE,FALSE,FALSE
+60206,ESC Harrison County Power,West Virginia,Harrison,1,FALSE,TRUE,FALSE,FALSE,FALSE
+60206,ESC Harrison County Power,West Virginia,Harrison,2,FALSE,TRUE,FALSE,FALSE,FALSE
+60345,Okeechobee Clean Energy Center,Florida,Okeechobee,1,TRUE,FALSE,TRUE,FALSE,FALSE
+60345,Okeechobee Clean Energy Center,Florida,Okeechobee,2,TRUE,FALSE,TRUE,FALSE,FALSE
+60345,Okeechobee Clean Energy Center,Florida,Okeechobee,3,TRUE,FALSE,TRUE,FALSE,FALSE
+60345,Okeechobee Clean Energy Center,Florida,Okeechobee,4,TRUE,FALSE,TRUE,FALSE,FALSE
+60356,South Field Energy,Ohio,Columbiana,1,TRUE,FALSE,TRUE,TRUE,FALSE
+60356,South Field Energy,Ohio,Columbiana,2,TRUE,FALSE,TRUE,TRUE,FALSE
+60356,South Field Energy,Ohio,Columbiana,3,TRUE,FALSE,TRUE,TRUE,FALSE
+60356,South Field Energy,Ohio,Columbiana,4,TRUE,FALSE,TRUE,TRUE,FALSE
+60364,White Street Renewables,North Carolina,Guilford,1,FALSE,FALSE,TRUE,FALSE,FALSE
+60387,Invenergy Nelson Expansion LLC,Illinois,Lee,1,TRUE,FALSE,TRUE,TRUE,FALSE
+60387,Invenergy Nelson Expansion LLC,Illinois,Lee,2,TRUE,FALSE,TRUE,TRUE,FALSE
+60589,CPV Fairview Energy Center,Pennsylvania,Cambria,1,TRUE,FALSE,TRUE,TRUE,FALSE
+60589,CPV Fairview Energy Center,Pennsylvania,Cambria,2,TRUE,FALSE,TRUE,TRUE,FALSE
+60589,CPV Fairview Energy Center,Pennsylvania,Cambria,3,TRUE,FALSE,TRUE,TRUE,FALSE
+60698,Stanton Energy Reliability Center Hybrid,California,Orange,1,TRUE,FALSE,TRUE,TRUE,FALSE
+60698,Stanton Energy Reliability Center Hybrid,California,Orange,2,TRUE,FALSE,TRUE,TRUE,FALSE
+60703,"Green City Recovery, LLC",Kentucky,Scott,1,FALSE,FALSE,TRUE,FALSE,FALSE
+60910,NET Power La Porte Station,Texas,Harris,1,FALSE,TRUE,FALSE,TRUE,FALSE
+60925,Montgomery County,Texas,Montgomery,1,TRUE,FALSE,TRUE,TRUE,FALSE
+60925,Montgomery County,Texas,Montgomery,2,TRUE,FALSE,TRUE,TRUE,FALSE
+60925,Montgomery County,Texas,Montgomery,3,TRUE,FALSE,TRUE,TRUE,FALSE
+60926,St. Charles Power Station (LA),Louisiana,St Charles,1,TRUE,FALSE,TRUE,TRUE,FALSE
+60926,St. Charles Power Station (LA),Louisiana,St Charles,2,TRUE,FALSE,TRUE,TRUE,FALSE
+60926,St. Charles Power Station (LA),Louisiana,St Charles,3,TRUE,FALSE,TRUE,TRUE,FALSE
+60927,Lake Charles Power,Louisiana,Calcasieu,1,TRUE,FALSE,TRUE,TRUE,FALSE
+60927,Lake Charles Power,Louisiana,Calcasieu,2,TRUE,FALSE,TRUE,TRUE,FALSE
+60927,Lake Charles Power,Louisiana,Calcasieu,3,TRUE,FALSE,TRUE,TRUE,FALSE
+60928,New Orleans Power,Louisiana,Orleans,1,FALSE,FALSE,TRUE,FALSE,FALSE
+61028,Hickory Run Energy Station,Pennsylvania,Lawrence,1,TRUE,FALSE,TRUE,TRUE,FALSE
+61028,Hickory Run Energy Station,Pennsylvania,Lawrence,2,TRUE,FALSE,TRUE,TRUE,FALSE
+61028,Hickory Run Energy Station,Pennsylvania,Lawrence,3,TRUE,FALSE,TRUE,TRUE,FALSE
+61035,Birdsboro Power,Pennsylvania,Berks,1,TRUE,FALSE,TRUE,TRUE,FALSE
+61144,Astoria Station,South Dakota,Deuel,1,TRUE,FALSE,TRUE,TRUE,FALSE
+61241,Tres City Power LLC,Texas,Victoria,1,TRUE,FALSE,TRUE,TRUE,FALSE
+61241,Tres City Power LLC,Texas,Victoria,2,TRUE,FALSE,TRUE,TRUE,FALSE
+61242,"Tres Port Power, LLC",Texas,Victoria,1,TRUE,FALSE,TRUE,TRUE,FALSE
+61242,"Tres Port Power, LLC",Texas,Victoria,2,TRUE,FALSE,TRUE,TRUE,FALSE
+61322,Long Ridge Energy Generation,Ohio,Monroe,1,TRUE,FALSE,TRUE,TRUE,FALSE
+61675,NCSU CCUP Cogeneration Plant,North Carolina,Wake,1,TRUE,FALSE,TRUE,FALSE,FALSE
+61956,MCRD Parris Island PV Hybrid,South Carolina,Beaufort,1,TRUE,FALSE,TRUE,FALSE,FALSE
+61966,Victoria Port Power II LLC,Texas,Victoria,1,TRUE,FALSE,TRUE,TRUE,FALSE
+61966,Victoria Port Power II LLC,Texas,Victoria,2,TRUE,FALSE,TRUE,TRUE,FALSE
+62022,Lincoln Land Energy Center,Illinois,Sangamon,1,FALSE,TRUE,FALSE,FALSE,FALSE
+62022,Lincoln Land Energy Center,Illinois,Sangamon,2,FALSE,TRUE,FALSE,FALSE,FALSE
+62115,AES Alamitos Energy Center,California,Los Angeles,1,TRUE,FALSE,TRUE,FALSE,FALSE
+62115,AES Alamitos Energy Center,California,Los Angeles,2,TRUE,FALSE,TRUE,FALSE,FALSE
+62115,AES Alamitos Energy Center,California,Los Angeles,3,TRUE,FALSE,TRUE,FALSE,FALSE
+62116,AES Huntington Beach Energy Project,California,Orange,1,TRUE,FALSE,TRUE,FALSE,FALSE
+62116,AES Huntington Beach Energy Project,California,Orange,2,TRUE,FALSE,TRUE,FALSE,FALSE
+62116,AES Huntington Beach Energy Project,California,Orange,3,TRUE,FALSE,TRUE,FALSE,FALSE
+62192,Blue Water Energy Center,Michigan,St Clair,1,TRUE,FALSE,TRUE,TRUE,FALSE
+62192,Blue Water Energy Center,Michigan,St Clair,2,TRUE,FALSE,TRUE,TRUE,FALSE
+62192,Blue Water Energy Center,Michigan,St Clair,3,TRUE,FALSE,TRUE,TRUE,FALSE
+62289,Dearborn Energy Center,Michigan,Wayne,1,TRUE,FALSE,TRUE,FALSE,FALSE
+62289,Dearborn Energy Center,Michigan,Wayne,2,TRUE,FALSE,TRUE,FALSE,FALSE
+62289,Dearborn Energy Center,Michigan,Wayne,3,TRUE,FALSE,TRUE,FALSE,FALSE
+62449,Kimberly Clark Mobile - CHP Plant,Alabama,Mobile,1,TRUE,FALSE,FALSE,FALSE,FALSE
+62449,Kimberly Clark Mobile - CHP Plant,Alabama,Mobile,2,TRUE,FALSE,FALSE,FALSE,FALSE
+62548,SJRR Power LLC,Texas,Harris,1,TRUE,FALSE,TRUE,TRUE,FALSE
+62548,SJRR Power LLC,Texas,Harris,2,TRUE,FALSE,TRUE,TRUE,FALSE
+62565,"Hill Top Energy Center, LLC",Pennsylvania,Greene,1,TRUE,FALSE,TRUE,TRUE,FALSE
+62641,Morehead Generating Facility,Kentucky,Rowan,1,FALSE,FALSE,TRUE,FALSE,FALSE
+62926,"Jackson Generation, LLC",Illinois,Will,1,TRUE,FALSE,TRUE,TRUE,FALSE
+62926,"Jackson Generation, LLC",Illinois,Will,2,TRUE,FALSE,TRUE,TRUE,FALSE
+62949,Guernsey Power Station,Ohio,Guernsey,1,TRUE,FALSE,TRUE,TRUE,FALSE
+62949,Guernsey Power Station,Ohio,Guernsey,2,TRUE,FALSE,TRUE,TRUE,FALSE
+62949,Guernsey Power Station,Ohio,Guernsey,3,TRUE,FALSE,TRUE,TRUE,FALSE
+63063,Duke Energy CHP at Clemson University,South Carolina,Pickens,1,TRUE,FALSE,TRUE,FALSE,FALSE
+63259,Delta Energy Park,Michigan,Eaton,1,TRUE,FALSE,TRUE,TRUE,FALSE
+63259,Delta Energy Park,Michigan,Eaton,2,TRUE,FALSE,TRUE,TRUE,FALSE
+63259,Delta Energy Park,Michigan,Eaton,3,TRUE,FALSE,TRUE,TRUE,FALSE
+63259,Delta Energy Park,Michigan,Eaton,4,TRUE,FALSE,TRUE,TRUE,FALSE
+63335,HO Clarke Generating,Texas,Harris,1,TRUE,FALSE,TRUE,TRUE,FALSE
+63335,HO Clarke Generating,Texas,Harris,2,TRUE,FALSE,TRUE,TRUE,FALSE
+63335,HO Clarke Generating,Texas,Harris,3,TRUE,FALSE,TRUE,TRUE,FALSE
+63335,HO Clarke Generating,Texas,Harris,4,TRUE,FALSE,TRUE,TRUE,FALSE
+63335,HO Clarke Generating,Texas,Harris,5,TRUE,FALSE,TRUE,TRUE,FALSE
+63335,HO Clarke Generating,Texas,Harris,6,TRUE,FALSE,TRUE,TRUE,FALSE
+63335,HO Clarke Generating,Texas,Harris,7,TRUE,FALSE,TRUE,TRUE,FALSE
+63335,HO Clarke Generating,Texas,Harris,8,TRUE,FALSE,TRUE,TRUE,FALSE
+63423,BYU Central Heating Plant,Utah,Utah,1,TRUE,FALSE,TRUE,FALSE,FALSE
+63535,Solar BESS Hybrid,Georgia,Cobb,1,TRUE,FALSE,TRUE,FALSE,FALSE
+63559,MMWEC Simple Cycle Gas Turbine,Massachusetts,Essex,1,FALSE,TRUE,TRUE,FALSE,FALSE
+63688,Topaz Generating,Texas,Galveston,1,TRUE,FALSE,TRUE,TRUE,FALSE
+63688,Topaz Generating,Texas,Galveston,2,TRUE,FALSE,TRUE,TRUE,FALSE
+63688,Topaz Generating,Texas,Galveston,3,TRUE,FALSE,TRUE,TRUE,FALSE
+63688,Topaz Generating,Texas,Galveston,4,TRUE,FALSE,TRUE,TRUE,FALSE
+63688,Topaz Generating,Texas,Galveston,5,TRUE,FALSE,TRUE,TRUE,FALSE
+63688,Topaz Generating,Texas,Galveston,6,TRUE,FALSE,TRUE,TRUE,FALSE
+63688,Topaz Generating,Texas,Galveston,7,TRUE,FALSE,TRUE,TRUE,FALSE
+63688,Topaz Generating,Texas,Galveston,8,TRUE,FALSE,TRUE,TRUE,FALSE
+63688,Topaz Generating,Texas,Galveston,9,TRUE,FALSE,TRUE,TRUE,FALSE
+63688,Topaz Generating,Texas,Galveston,10,TRUE,FALSE,TRUE,TRUE,FALSE
+63802,Shady Hills Combined Cycle Facility,Florida,Pasco,1,FALSE,TRUE,FALSE,FALSE,FALSE
+63911,MEC North,Michigan,Calhoun,1,FALSE,TRUE,FALSE,FALSE,FALSE
+63912,MEC South,Michigan,Calhoun,1,FALSE,TRUE,FALSE,FALSE,FALSE
+63931,CPV Three Rivers Energy Center,Illinois,Grundy,1,TRUE,FALSE,TRUE,TRUE,FALSE
+63931,CPV Three Rivers Energy Center,Illinois,Grundy,2,TRUE,FALSE,TRUE,TRUE,FALSE
+63977,Central Generating,Michigan,Montcalm,1,FALSE,FALSE,TRUE,FALSE,FALSE
+64020,West Riverside Energy Center,Wisconsin,Rock,1,TRUE,FALSE,TRUE,FALSE,FALSE
+64020,West Riverside Energy Center,Wisconsin,Rock,2,TRUE,FALSE,TRUE,FALSE,FALSE
+64020,West Riverside Energy Center,Wisconsin,Rock,3,TRUE,FALSE,TRUE,FALSE,FALSE
+64241,Maryland Bioenergy Center (Jessup),Maryland,Howard,1,TRUE,FALSE,TRUE,FALSE,FALSE
+64383,Braes Bayou Plant,Texas,Fort Bend,1,TRUE,FALSE,TRUE,TRUE,FALSE
+64383,Braes Bayou Plant,Texas,Fort Bend,2,TRUE,FALSE,TRUE,TRUE,FALSE
+64383,Braes Bayou Plant,Texas,Fort Bend,3,TRUE,FALSE,TRUE,TRUE,FALSE
+64383,Braes Bayou Plant,Texas,Fort Bend,4,TRUE,FALSE,TRUE,TRUE,FALSE
+64383,Braes Bayou Plant,Texas,Fort Bend,5,TRUE,FALSE,TRUE,TRUE,FALSE
+64383,Braes Bayou Plant,Texas,Fort Bend,6,TRUE,FALSE,TRUE,TRUE,FALSE
+64383,Braes Bayou Plant,Texas,Fort Bend,7,TRUE,FALSE,TRUE,TRUE,FALSE
+64383,Braes Bayou Plant,Texas,Fort Bend,8,TRUE,FALSE,TRUE,TRUE,FALSE
+64505,Flathead Landfill to Gas Energy Facility,Montana,Flathead,1,FALSE,FALSE,TRUE,FALSE,FALSE
+64547,Turtle Creek,Nebraska,Sarpy,1,FALSE,TRUE,FALSE,FALSE,FALSE
+64547,Turtle Creek,Nebraska,Sarpy,2,FALSE,TRUE,FALSE,FALSE,FALSE
+64854,Primient,Indiana,Tippecanoe,1,TRUE,FALSE,FALSE,FALSE,FALSE
+64854,Primient,Indiana,Tippecanoe,2,TRUE,FALSE,FALSE,FALSE,FALSE
+65372,Mark One Power Station,Texas,Brazoria,1,TRUE,FALSE,TRUE,TRUE,FALSE
+65372,Mark One Power Station,Texas,Brazoria,2,TRUE,FALSE,TRUE,TRUE,FALSE
+65372,Mark One Power Station,Texas,Brazoria,3,TRUE,FALSE,TRUE,TRUE,FALSE
+65372,Mark One Power Station,Texas,Brazoria,4,TRUE,FALSE,TRUE,TRUE,FALSE
+65372,Mark One Power Station,Texas,Brazoria,5,TRUE,FALSE,TRUE,TRUE,FALSE
+65372,Mark One Power Station,Texas,Brazoria,6,TRUE,FALSE,TRUE,TRUE,FALSE
+65373,Brotman Power Station,Texas,Brazoria,1,TRUE,FALSE,TRUE,TRUE,FALSE
+65373,Brotman Power Station,Texas,Brazoria,2,TRUE,FALSE,TRUE,TRUE,FALSE
+65373,Brotman Power Station,Texas,Brazoria,3,TRUE,FALSE,TRUE,TRUE,FALSE
+65373,Brotman Power Station,Texas,Brazoria,4,TRUE,FALSE,TRUE,TRUE,FALSE
+65373,Brotman Power Station,Texas,Brazoria,5,TRUE,FALSE,TRUE,TRUE,FALSE
+65373,Brotman Power Station,Texas,Brazoria,6,TRUE,FALSE,TRUE,TRUE,FALSE
+65373,Brotman Power Station,Texas,Brazoria,7,FALSE,FALSE,FALSE,TRUE,FALSE
+65373,Brotman Power Station,Texas,Brazoria,8,FALSE,FALSE,FALSE,TRUE,FALSE
+65400,Purdue CHP,Indiana,Tippecanoe,1,TRUE,FALSE,TRUE,FALSE,FALSE
+65405,"Flint Hills Resources Pine Bend, LLC",Minnesota,Dakota,1,TRUE,FALSE,TRUE,FALSE,FALSE
+65405,"Flint Hills Resources Pine Bend, LLC",Minnesota,Dakota,2,TRUE,FALSE,TRUE,FALSE,FALSE
+65512,"Kansas Ethanol, LLC",Kansas,Rice,1,TRUE,FALSE,TRUE,FALSE,FALSE
+65978,Dania Beach 7,Florida,Broward,1,TRUE,FALSE,TRUE,FALSE,FALSE
+65978,Dania Beach 7,Florida,Broward,2,TRUE,FALSE,TRUE,FALSE,FALSE
+65978,Dania Beach 7,Florida,Broward,3,TRUE,FALSE,TRUE,FALSE,FALSE
+66018,Norton Powerhouse 2,Massachusetts,Worcester,1,TRUE,FALSE,TRUE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,1,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,2,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,3,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,4,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,5,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,6,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,7,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,8,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,9,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,10,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,11,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,12,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,13,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,14,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,15,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,16,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,17,FALSE,TRUE,FALSE,FALSE,FALSE
+66478,NTEC Gas Plant,New Mexico,San Juan,18,FALSE,TRUE,FALSE,FALSE,FALSE
+66600,Bushy Park Combustion Turbine Facility,South Carolina,Berkeley,1,FALSE,TRUE,FALSE,FALSE,FALSE
+66601,NRG THW GT Electric Generating Station,Texas,Harris,1,FALSE,TRUE,FALSE,FALSE,FALSE
+66601,NRG THW GT Electric Generating Station,Texas,Harris,2,FALSE,TRUE,FALSE,FALSE,FALSE
+66604,Remy Jade Power Station,Texas,Harris,1,FALSE,TRUE,FALSE,FALSE,FALSE
+66604,Remy Jade Power Station,Texas,Harris,2,FALSE,TRUE,FALSE,FALSE,FALSE
+66604,Remy Jade Power Station,Texas,Harris,3,FALSE,TRUE,FALSE,FALSE,FALSE
+66604,Remy Jade Power Station,Texas,Harris,4,FALSE,TRUE,FALSE,FALSE,FALSE
+66604,Remy Jade Power Station,Texas,Harris,5,FALSE,TRUE,FALSE,FALSE,FALSE
+66604,Remy Jade Power Station,Texas,Harris,6,FALSE,TRUE,FALSE,FALSE,FALSE
+66604,Remy Jade Power Station,Texas,Harris,7,FALSE,TRUE,FALSE,FALSE,FALSE
+66604,Remy Jade Power Station,Texas,Harris,8,FALSE,TRUE,FALSE,FALSE,FALSE
+66621,Orange County Advanced Power Station,Texas,Orange,1,FALSE,TRUE,FALSE,FALSE,FALSE
+66621,Orange County Advanced Power Station,Texas,Orange,2,FALSE,TRUE,FALSE,FALSE,FALSE
+66621,Orange County Advanced Power Station,Texas,Orange,3,FALSE,TRUE,FALSE,FALSE,FALSE
+66918,Trumbull Energy Center,Ohio,Trumbull,1,FALSE,TRUE,FALSE,FALSE,FALSE
+66918,Trumbull Energy Center,Ohio,Trumbull,2,FALSE,TRUE,FALSE,FALSE,FALSE
+66918,Trumbull Energy Center,Ohio,Trumbull,3,FALSE,TRUE,FALSE,FALSE,FALSE
+67005,Magnolia Power,Louisiana,Iberville,1,FALSE,TRUE,FALSE,FALSE,FALSE
+67262,Ripley Energy Center,Oklahoma,Payne,1,FALSE,TRUE,FALSE,FALSE,FALSE
+67263,Turney Energy Center,Missouri,Clinton,1,FALSE,TRUE,FALSE,FALSE,FALSE
+67265,CHP Plant,NA,District of Columbia,1,FALSE,TRUE,FALSE,FALSE,FALSE
+67445,Logan City 2,Utah,Cache,1,FALSE,TRUE,FALSE,FALSE,FALSE
+67445,Logan City 2,Utah,Cache,2,FALSE,TRUE,FALSE,FALSE,FALSE
+67445,Logan City 2,Utah,Cache,3,FALSE,TRUE,FALSE,FALSE,FALSE
+67445,Logan City 2,Utah,Cache,4,FALSE,TRUE,FALSE,FALSE,FALSE
+67500,"FPEC, LLC",Texas,Freestone,1,FALSE,TRUE,FALSE,FALSE,FALSE
+67500,"FPEC, LLC",Texas,Freestone,2,FALSE,TRUE,FALSE,FALSE,FALSE
+67576,Castle Bluff Energy Center,Missouri,St Louis,1,FALSE,TRUE,FALSE,FALSE,FALSE
+67576,Castle Bluff Energy Center,Missouri,St Louis,2,FALSE,TRUE,FALSE,FALSE,FALSE
+67576,Castle Bluff Energy Center,Missouri,St Louis,3,FALSE,TRUE,FALSE,FALSE,FALSE
+NA,Dania Beach (Part of Lauderdale Plant),Florida,Broward,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,"Puerto Rico Electric Power Authority, Palo Seco",NA,Toa Baja,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Cameron LNG,Louisiana,Cameron Parish,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Big Bend Station,Florida,Hillsborough,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Northern Natural Gas Co - Bushton,Kansas,Rice,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Northern Natural Gas Co - Mullinville,Kansas,Kiowa,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Northern Natural Gas Co - Beatrice,Nebraska,Gage,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Gulf Clean Energy Center (formerly Plant Crist),Florida,Escambia,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Naval Station Norfolk (NAVSTA Norfolk),Virginia,Norfolk City,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Primary Products Ingredients Americas,Indiana,Tippecanoe,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Perulack Compressor Station,Pennsylvania,Juniata,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Cherokee Station,Colorado,Denver,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,University of Michigan Central Power Plant,Michigan,Washtenaw,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,DTE Gas - Willow Run Compressor Station,Michigan,Washtenaw,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,DTE Gas Milford Compressor Station,Michigan,Oakland,1,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Dania Beach (Part of Lauderdale Plant),Florida,Broward,2,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,"Puerto Rico Electric Power Authority, Palo Seco",NA,Toa Baja,2,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Cameron LNG,Louisiana,Cameron Parish,2,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Big Bend Station,Florida,Hillsborough,2,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Gulf Clean Energy Center (formerly Plant Crist),Florida,Escambia,2,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Primary Products Ingredients Americas,Indiana,Tippecanoe,2,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Perulack Compressor Station,Pennsylvania,Juniata,2,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Cherokee Station,Colorado,Denver,2,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,DTE Gas Milford Compressor Station,Michigan,Oakland,2,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,"Puerto Rico Electric Power Authority, Palo Seco",NA,Toa Baja,3,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Cameron LNG,Louisiana,Cameron Parish,3,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Gulf Clean Energy Center (formerly Plant Crist),Florida,Escambia,3,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,DTE Gas Milford Compressor Station,Michigan,Oakland,3,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Cameron LNG,Louisiana,Cameron Parish,4,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Gulf Clean Energy Center (formerly Plant Crist),Florida,Escambia,4,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Cameron LNG,Louisiana,Cameron Parish,5,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Cameron LNG,Louisiana,Cameron Parish,6,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Cameron LNG,Louisiana,Cameron Parish,7,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Cameron LNG,Louisiana,Cameron Parish,8,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Cameron LNG,Louisiana,Cameron Parish,9,FALSE,FALSE,FALSE,FALSE,TRUE
+NA,Cameron LNG,Louisiana,Cameron Parish,10,FALSE,FALSE,FALSE,FALSE,TRUE

@@ -1,0 +1,432 @@
+state,county,plant_name,owner_name,unit,EIA,EIA_proposed,NEEDS,NESHAP
+Alabama,Mobile,Barry,NA,1,FALSE,TRUE,FALSE,FALSE
+Alabama,Mobile,Barry,NA,2,FALSE,TRUE,FALSE,FALSE
+Alabama,Mobile,Kimberly Clark Mobile - CHP Plant,NA,1,TRUE,FALSE,FALSE,FALSE
+Alabama,Mobile,Kimberly Clark Mobile - CHP Plant,NA,2,TRUE,FALSE,FALSE,FALSE
+Alabama,Washington,Lowman Energy Center,NA,1,FALSE,TRUE,FALSE,FALSE
+Alabama,Washington,Lowman Energy Center,NA,2,FALSE,TRUE,FALSE,FALSE
+Arizona,Maricopa,Agua Fria,Salt River Project,1,TRUE,FALSE,TRUE,FALSE
+Arizona,Maricopa,Agua Fria,Salt River Project,2,TRUE,FALSE,TRUE,FALSE
+Arizona,Maricopa,Arizona State University CHP,NA,1,TRUE,FALSE,FALSE,FALSE
+Arizona,Maricopa,Gila Bend Power Generation Station,NA,1,FALSE,TRUE,FALSE,FALSE
+Arizona,Maricopa,Gila Bend Power Generation Station,NA,2,FALSE,TRUE,FALSE,FALSE
+Arizona,Maricopa,Gila Bend Power Generation Station,NA,3,FALSE,TRUE,FALSE,FALSE
+Arizona,Maricopa,Gila Bend Power Generation Station,NA,4,FALSE,TRUE,FALSE,FALSE
+Arizona,Maricopa,Ocotillo,Arizona Public Service Co,1,TRUE,FALSE,TRUE,FALSE
+Arizona,Maricopa,Ocotillo,Arizona Public Service Co,2,TRUE,FALSE,TRUE,FALSE
+Arizona,Maricopa,Ocotillo,Arizona Public Service Co,3,TRUE,FALSE,TRUE,FALSE
+Arizona,Maricopa,Ocotillo,Arizona Public Service Co,4,TRUE,FALSE,TRUE,FALSE
+Arizona,Maricopa,Ocotillo,Arizona Public Service Co,5,TRUE,FALSE,TRUE,FALSE
+Arizona,Pinal,Desert Basin,Salt River Project,1,TRUE,FALSE,TRUE,FALSE
+Arizona,Pinal,Desert Basin,Salt River Project,2,TRUE,FALSE,TRUE,FALSE
+California,Imperial,CE&P Imperial Valley 1,NA,1,FALSE,TRUE,FALSE,FALSE
+California,Los Angeles,AES Alamitos Energy Center,AES Alamitos Energy LLC,1,TRUE,FALSE,TRUE,FALSE
+California,Los Angeles,AES Alamitos Energy Center,AES Alamitos Energy LLC,2,TRUE,FALSE,TRUE,FALSE
+California,Los Angeles,AES Alamitos Energy Center,AES Alamitos Energy LLC,3,TRUE,FALSE,TRUE,FALSE
+California,Orange,AES Huntington Beach Energy Project,AES Southland LLC,1,TRUE,FALSE,TRUE,FALSE
+California,Orange,AES Huntington Beach Energy Project,AES Southland LLC,2,TRUE,FALSE,TRUE,FALSE
+California,Orange,AES Huntington Beach Energy Project,AES Southland LLC,3,TRUE,FALSE,TRUE,FALSE
+California,Orange,Blacksand Generating Facility,NA,1,FALSE,TRUE,FALSE,FALSE
+California,Orange,Blacksand Generating Facility,NA,2,FALSE,TRUE,FALSE,FALSE
+California,Orange,Stanton Energy Reliability Center Hybrid,Stanton Energy Reliability Center LLC,1,TRUE,FALSE,TRUE,FALSE
+California,Orange,Stanton Energy Reliability Center Hybrid,Stanton Energy Reliability Center LLC,2,TRUE,FALSE,TRUE,FALSE
+California,Placer,Roseville Energy Park,California Dept. of Water Resources,1,TRUE,FALSE,TRUE,FALSE
+California,Placer,Roseville Energy Park,California Dept. of Water Resources,2,TRUE,FALSE,TRUE,FALSE
+California,San Bernardino,Energy Center,NA,1,TRUE,FALSE,FALSE,FALSE
+California,San Bernardino,Energy Center,NA,2,TRUE,FALSE,FALSE,FALSE
+California,San Bernardino,Energy Center,NA,3,TRUE,FALSE,FALSE,FALSE
+California,San Bernardino,New-Indy Ontario Mill,New Indy Ontario LLC,1,TRUE,FALSE,TRUE,FALSE
+California,San Bernardino,New-Indy Ontario Mill,New Indy Ontario LLC,2,TRUE,FALSE,TRUE,FALSE
+California,San Diego,Carlsbad Energy Center,Carlsbad Energy Center LLC,1,TRUE,FALSE,TRUE,FALSE
+California,San Diego,Carlsbad Energy Center,Carlsbad Energy Center LLC,2,TRUE,FALSE,TRUE,FALSE
+California,San Diego,Carlsbad Energy Center,Carlsbad Energy Center LLC,3,TRUE,FALSE,TRUE,FALSE
+California,San Diego,Carlsbad Energy Center,Carlsbad Energy Center LLC,4,TRUE,FALSE,TRUE,FALSE
+California,San Diego,Carlsbad Energy Center,Carlsbad Energy Center LLC,5,TRUE,FALSE,TRUE,FALSE
+California,Sutter,Greenleaf 1,California Dept. of Water Resources,1,TRUE,FALSE,TRUE,FALSE
+California,Sutter,Greenleaf 1,California Dept. of Water Resources,2,TRUE,FALSE,TRUE,FALSE
+Colorado,Denver,Cherokee Station,Public Service Company of Colorado,1,FALSE,FALSE,FALSE,TRUE
+Colorado,Denver,Cherokee Station,Public Service Company of Colorado,2,FALSE,FALSE,FALSE,TRUE
+Colorado,El Paso,South Plant,NA,1,FALSE,TRUE,FALSE,FALSE
+Colorado,El Paso,South Plant,NA,2,FALSE,TRUE,FALSE,FALSE
+Colorado,El Paso,South Plant,NA,3,FALSE,TRUE,FALSE,FALSE
+Colorado,El Paso,South Plant,NA,4,FALSE,TRUE,FALSE,FALSE
+Colorado,El Paso,South Plant,NA,5,FALSE,TRUE,FALSE,FALSE
+Colorado,El Paso,South Plant,NA,6,FALSE,TRUE,FALSE,FALSE
+Connecticut,Fairfield,Bridgeport Station,PSEG Power Connecticut LLC,1,TRUE,FALSE,TRUE,TRUE
+Connecticut,Fairfield,Bridgeport Station,PSEG Power Connecticut LLC,2,TRUE,FALSE,TRUE,FALSE
+Connecticut,Hartford,Hartford Hospital Cogeneration,NA,1,FALSE,TRUE,FALSE,FALSE
+Connecticut,Hartford,Hartford Hospital Cogeneration,NA,2,FALSE,TRUE,FALSE,FALSE
+Connecticut,New Haven,CPV Towantic Energy Center,CPV Towantic LLC,1,TRUE,FALSE,TRUE,FALSE
+Connecticut,New Haven,CPV Towantic Energy Center,CPV Towantic LLC,2,TRUE,FALSE,TRUE,FALSE
+Connecticut,New Haven,CPV Towantic Energy Center,CPV Towantic LLC,3,TRUE,FALSE,TRUE,FALSE
+Connecticut,New Haven,Wallingford Energy,Wallingford Energy II LLC,1,TRUE,FALSE,TRUE,FALSE
+Connecticut,New Haven,Wallingford Energy,Wallingford Energy II LLC,2,TRUE,FALSE,TRUE,FALSE
+Florida,Alachua,John R Kelly,Gainesville Regional Utilities,1,TRUE,FALSE,TRUE,FALSE
+Florida,Broward,Dania Beach 7,Florida Power & Light Co,1,TRUE,FALSE,TRUE,FALSE
+Florida,Broward,Dania Beach 7,Florida Power & Light Co,2,TRUE,FALSE,TRUE,FALSE
+Florida,Broward,Dania Beach 7,Florida Power & Light Co,3,TRUE,FALSE,TRUE,FALSE
+Florida,Broward County,Dania Beach (Part of Lauderdale Plant),Florida Power & Light Co,1,FALSE,FALSE,FALSE,TRUE
+Florida,Broward County,Dania Beach (Part of Lauderdale Plant),Florida Power & Light Co,2,FALSE,FALSE,FALSE,TRUE
+Florida,Citrus,Crystal River,Duke Energy Florida,1,TRUE,FALSE,TRUE,FALSE
+Florida,Citrus,Crystal River,Duke Energy Florida,2,TRUE,FALSE,TRUE,FALSE
+Florida,Citrus,Crystal River,Duke Energy Florida,3,TRUE,FALSE,TRUE,FALSE
+Florida,Citrus,Crystal River,Duke Energy Florida,4,TRUE,FALSE,TRUE,FALSE
+Florida,Citrus,Crystal River,Duke Energy Florida,5,TRUE,FALSE,TRUE,FALSE
+Florida,Citrus,Crystal River,Duke Energy Florida,6,TRUE,FALSE,TRUE,FALSE
+Florida,Escambia,Gulf Clean Energy Center,Florida Power & Light Co,1,TRUE,FALSE,TRUE,TRUE
+Florida,Escambia,Gulf Clean Energy Center,Florida Power & Light Co,2,TRUE,FALSE,TRUE,TRUE
+Florida,Escambia,Gulf Clean Energy Center,Florida Power & Light Co,3,TRUE,FALSE,TRUE,TRUE
+Florida,Escambia,Gulf Clean Energy Center,Florida Power & Light Co,4,TRUE,FALSE,TRUE,TRUE
+Florida,Hillsborough,Big Bend,Tampa Electric Co,1,TRUE,FALSE,TRUE,FALSE
+Florida,Hillsborough,Big Bend,Tampa Electric Co,2,TRUE,FALSE,TRUE,FALSE
+Florida,Hillsborough,Big Bend Station,Tampa Electric Company,1,FALSE,FALSE,FALSE,TRUE
+Florida,Hillsborough,Big Bend Station,Tampa Electric Company,2,FALSE,FALSE,FALSE,TRUE
+Florida,Okeechobee,Okeechobee Clean Energy Center,Florida Power & Light Co,1,TRUE,FALSE,TRUE,FALSE
+Florida,Okeechobee,Okeechobee Clean Energy Center,Florida Power & Light Co,2,TRUE,FALSE,TRUE,FALSE
+Florida,Okeechobee,Okeechobee Clean Energy Center,Florida Power & Light Co,3,TRUE,FALSE,TRUE,FALSE
+Florida,Okeechobee,Okeechobee Clean Energy Center,Florida Power & Light Co,4,TRUE,FALSE,TRUE,FALSE
+Florida,Pasco,Shady Hills Combined Cycle Facility,NA,1,FALSE,TRUE,FALSE,FALSE
+Florida,Polk,C D McIntosh Jr,Lakeland Dept of Electric Water Utilities,1,TRUE,FALSE,TRUE,FALSE
+Florida,Putnam,Seminole (FL),NA,1,FALSE,TRUE,FALSE,FALSE
+Florida,Putnam,Seminole (FL),NA,2,FALSE,TRUE,FALSE,FALSE
+Florida,Putnam,Seminole (FL),NA,3,FALSE,TRUE,FALSE,FALSE
+Georgia,Cobb,Solar BESS Hybrid,Cobb Electric Membership Corporation,1,TRUE,FALSE,TRUE,FALSE
+Illinois,Grundy,CPV Three Rivers Energy Center,NA,1,FALSE,TRUE,FALSE,FALSE
+Illinois,Grundy,CPV Three Rivers Energy Center,NA,2,FALSE,TRUE,FALSE,FALSE
+Illinois,Lee,Invenergy Nelson Expansion LLC,NA,1,FALSE,TRUE,FALSE,FALSE
+Illinois,Lee,Invenergy Nelson Expansion LLC,NA,2,FALSE,TRUE,FALSE,FALSE
+Illinois,Sangamon,Lincoln Land Energy Center,NA,1,FALSE,TRUE,FALSE,FALSE
+Illinois,Sangamon,Lincoln Land Energy Center,NA,2,FALSE,TRUE,FALSE,FALSE
+Illinois,Will,"Jackson Generation, LLC","Jackson Generation, LLC",1,TRUE,FALSE,TRUE,FALSE
+Illinois,Will,"Jackson Generation, LLC","Jackson Generation, LLC",2,TRUE,FALSE,TRUE,FALSE
+Indiana,LaGrange,ANR LaGrange CS,ANR Pipeline Company,1,FALSE,FALSE,FALSE,TRUE
+Indiana,Morgan,Eagle Valley (IN),Indianapolis Power & Light,1,TRUE,FALSE,TRUE,FALSE
+Indiana,Morgan,Eagle Valley (IN),Indianapolis Power & Light,2,TRUE,FALSE,TRUE,FALSE
+Indiana,Morgan,Eagle Valley (IN),Indianapolis Power & Light,3,TRUE,FALSE,TRUE,FALSE
+Indiana,Posey,A B Brown,NA,1,FALSE,TRUE,FALSE,FALSE
+Indiana,Posey,A B Brown,NA,2,FALSE,TRUE,FALSE,FALSE
+Indiana,St Joseph,St Joseph Energy Center,St Joseph Energy Center LLC,1,TRUE,FALSE,TRUE,FALSE
+Indiana,St Joseph,St Joseph Energy Center,St Joseph Energy Center LLC,2,TRUE,FALSE,TRUE,FALSE
+Indiana,St Joseph,St Joseph Energy Center,St Joseph Energy Center LLC,3,TRUE,FALSE,TRUE,FALSE
+Indiana,St Joseph,University of Notre Dame,University of Notre Dame,1,TRUE,FALSE,TRUE,FALSE
+Indiana,St Joseph,University of Notre Dame,University of Notre Dame,2,TRUE,FALSE,TRUE,FALSE
+Indiana,Tippecanoe,Primary Products Ingredients Americas,"Primary Products Ingredients Americas, LLC (formerly Tate & Lyle)",1,FALSE,FALSE,FALSE,TRUE
+Indiana,Tippecanoe,Primary Products Ingredients Americas,"Primary Products Ingredients Americas, LLC (formerly Tate & Lyle)",2,FALSE,FALSE,FALSE,TRUE
+Indiana,Tippecanoe,Primient,NA,1,TRUE,FALSE,FALSE,FALSE
+Indiana,Tippecanoe,Primient,NA,2,TRUE,FALSE,FALSE,FALSE
+Indiana,Tippecanoe,Purdue CHP,"Duke Energy Indiana, LLC",1,TRUE,FALSE,TRUE,FALSE
+Kansas,Kiowa,Northern Natural Gas Co - Mullinville,NORTHERN NATURAL GAS CO,1,FALSE,FALSE,FALSE,TRUE
+Kansas,Rice,"Kansas Ethanol, LLC","Kansas Ethanol, LLC",1,TRUE,FALSE,TRUE,FALSE
+Kansas,Rice,Northern Natural Gas Co - Bushton,NORTHERN NATURAL GAS CO,1,FALSE,FALSE,FALSE,TRUE
+Kentucky,Breckinridge County,Texas Gas Trans LLC,Texas Gas Trans LLC,1,FALSE,FALSE,FALSE,TRUE
+Kentucky,Powell County,TN Gas Pipeline Co LLC - Station 106,TN Gas Pipeline Co LLC - Station 106,1,FALSE,FALSE,FALSE,TRUE
+Kentucky,Powell County,TN Gas Pipeline Co LLC - Station 106,TN Gas Pipeline Co LLC - Station 106,2,FALSE,FALSE,FALSE,TRUE
+Louisiana,Acadia Parish,Columbia Gulf Transmission Co - Rayne Compressor Station,COLUMBIA GULF TRANSMISSION,1,FALSE,FALSE,FALSE,TRUE
+Louisiana,Acadia Parish,Columbia Gulf Transmission Co - Rayne Compressor Station,COLUMBIA GULF TRANSMISSION,2,FALSE,FALSE,FALSE,TRUE
+Louisiana,Ascension,Geismar,NA,1,FALSE,TRUE,FALSE,FALSE
+Louisiana,Calcasieu,Lake Charles Power,Entergy Services LLC,1,TRUE,FALSE,TRUE,FALSE
+Louisiana,Calcasieu,Lake Charles Power,Entergy Services LLC,2,TRUE,FALSE,TRUE,FALSE
+Louisiana,Calcasieu,Lake Charles Power,Entergy Services LLC,3,TRUE,FALSE,TRUE,FALSE
+Louisiana,Cameron Parish,Cameron LNG,Cameron LNG,1,FALSE,FALSE,FALSE,TRUE
+Louisiana,Cameron Parish,Cameron LNG,Cameron LNG,2,FALSE,FALSE,FALSE,TRUE
+Louisiana,Cameron Parish,Cameron LNG,Cameron LNG,3,FALSE,FALSE,FALSE,TRUE
+Louisiana,Cameron Parish,Cameron LNG,Cameron LNG,4,FALSE,FALSE,FALSE,TRUE
+Louisiana,Cameron Parish,Cameron LNG,Cameron LNG,5,FALSE,FALSE,FALSE,TRUE
+Louisiana,Cameron Parish,Cameron LNG,Cameron LNG,6,FALSE,FALSE,FALSE,TRUE
+Louisiana,Cameron Parish,Cameron LNG,Cameron LNG,7,FALSE,FALSE,FALSE,TRUE
+Louisiana,Cameron Parish,Cameron LNG,Cameron LNG,8,FALSE,FALSE,FALSE,TRUE
+Louisiana,Cameron Parish,Cameron LNG,Cameron LNG,9,FALSE,FALSE,FALSE,TRUE
+Louisiana,Cameron Parish,Cameron LNG,Cameron LNG,10,FALSE,FALSE,FALSE,TRUE
+Louisiana,DeSoto,Mansfield Mill,NA,1,TRUE,FALSE,FALSE,FALSE
+Louisiana,Iberville,Plaquemine Cogeneration Plant,NA,1,FALSE,TRUE,FALSE,FALSE
+Louisiana,Iberville,Plaquemine Cogeneration Plant,NA,2,FALSE,TRUE,FALSE,FALSE
+Louisiana,Orleans,New Orleans Power,Entergy New Orleans Inc,1,TRUE,FALSE,TRUE,FALSE
+Louisiana,St Charles,St. Charles Power Station (LA),Entergy Services LLC,1,TRUE,FALSE,TRUE,FALSE
+Louisiana,St Charles,St. Charles Power Station (LA),Entergy Services LLC,2,TRUE,FALSE,TRUE,FALSE
+Louisiana,St Charles,St. Charles Power Station (LA),Entergy Services LLC,3,TRUE,FALSE,TRUE,FALSE
+Louisiana,Washington,Washington Parish Energy Center,Entergy Louisiana LLC,1,TRUE,FALSE,TRUE,FALSE
+Louisiana,Washington,Washington Parish Energy Center,Entergy Louisiana LLC,2,TRUE,FALSE,TRUE,FALSE
+Maryland,Cecil,Wildcat Point Generation Facility,Old Dominion Electric Coop,1,TRUE,FALSE,TRUE,FALSE
+Maryland,Cecil,Wildcat Point Generation Facility,Old Dominion Electric Coop,2,TRUE,FALSE,TRUE,FALSE
+Maryland,Cecil,Wildcat Point Generation Facility,Old Dominion Electric Coop,3,TRUE,FALSE,TRUE,FALSE
+Maryland,Howard,Maryland Bioenergy Center (Jessup),Bioenergy DevCo,1,TRUE,FALSE,TRUE,FALSE
+Maryland,Howard County,Transcontinental Gas Pipeline,Transcontinental Gas Pipeline,1,FALSE,FALSE,FALSE,TRUE
+Maryland,Montgomery,NIH Cogeneration Facility,Pepco Energy Services Inc,1,TRUE,FALSE,TRUE,FALSE
+Maryland,Prince Georges,Keys Energy Center,PSEG Keys Energy Center LLC,1,TRUE,FALSE,TRUE,FALSE
+Maryland,Prince Georges,Keys Energy Center,PSEG Keys Energy Center LLC,2,TRUE,FALSE,TRUE,FALSE
+Maryland,Prince Georges,Keys Energy Center,PSEG Keys Energy Center LLC,3,TRUE,FALSE,TRUE,FALSE
+Massachusetts,Barnstable,Canal,Canal 3 Generating LLC,1,TRUE,FALSE,TRUE,FALSE
+Massachusetts,Barnstable,Canal Generating Station,NRG,1,FALSE,FALSE,FALSE,TRUE
+Massachusetts,Essex,MMWEC Simple Cycle Gas Turbine,NA,1,FALSE,TRUE,FALSE,FALSE
+Massachusetts,Essex,Salem Harbor Power Development LP,Footprint Power Salem Harbor Operations LLC,1,TRUE,FALSE,TRUE,FALSE
+Massachusetts,Essex,Salem Harbor Power Development LP,Footprint Power Salem Harbor Operations LLC,2,TRUE,FALSE,TRUE,FALSE
+Massachusetts,Essex,Salem Harbor Power Development LP,Footprint Power Salem Harbor Operations LLC,3,TRUE,FALSE,TRUE,FALSE
+Massachusetts,Essex,Salem Harbor Power Development LP,Footprint Power Salem Harbor Operations LLC,4,TRUE,FALSE,TRUE,FALSE
+Massachusetts,Middlesex,Mass Inst Tech Cntrl Utilities/Cogen Plt,NA,1,TRUE,FALSE,FALSE,FALSE
+Massachusetts,Middlesex,Mass Inst Tech Cntrl Utilities/Cogen Plt,NA,2,TRUE,FALSE,FALSE,FALSE
+Massachusetts,Nantucket,Nantucket Hybrid,Nantucket Electric Co,1,TRUE,FALSE,TRUE,FALSE
+Massachusetts,Norfolk,Exelon West Medway II LLC,West Medway II LLC,1,TRUE,FALSE,TRUE,FALSE
+Massachusetts,Norfolk,Exelon West Medway II LLC,West Medway II LLC,2,TRUE,FALSE,TRUE,FALSE
+Massachusetts,Worcester,Norton Powerhouse 2,Norton Powerhouse 2,1,TRUE,FALSE,TRUE,FALSE
+Michigan,Calhoun,MEC North,NA,1,FALSE,TRUE,FALSE,FALSE
+Michigan,Calhoun,MEC South,NA,1,FALSE,TRUE,FALSE,FALSE
+Michigan,Cass,Indeck Niles Energy Center,KOSPO USA,1,TRUE,FALSE,TRUE,FALSE
+Michigan,Cass,Indeck Niles Energy Center,KOSPO USA,2,TRUE,FALSE,TRUE,FALSE
+Michigan,Cass,Indeck Niles Energy Center,KOSPO USA,3,TRUE,FALSE,TRUE,FALSE
+Michigan,Eaton,Delta Energy Park,Lansing Board of Water and Light,1,TRUE,FALSE,TRUE,FALSE
+Michigan,Eaton,Delta Energy Park,Lansing Board of Water and Light,2,TRUE,FALSE,TRUE,FALSE
+Michigan,Eaton,Delta Energy Park,Lansing Board of Water and Light,3,TRUE,FALSE,TRUE,FALSE
+Michigan,Eaton,Delta Energy Park,Lansing Board of Water and Light,4,TRUE,FALSE,TRUE,FALSE
+Michigan,Oakland County,DTE Gas Milford Compressor Station,DTE Energy,1,FALSE,FALSE,FALSE,TRUE
+Michigan,Oakland County,DTE Gas Milford Compressor Station,DTE Energy,2,FALSE,FALSE,FALSE,TRUE
+Michigan,Oakland County,DTE Gas Milford Compressor Station,DTE Energy,3,FALSE,FALSE,FALSE,TRUE
+Michigan,Saint Clair County,DTE Gas Belle River Mills Compressor Station,DTE Energy,1,FALSE,FALSE,FALSE,TRUE
+Michigan,Saint Clair County,DTE Gas Belle River Mills Compressor Station,DTE Energy,2,FALSE,FALSE,FALSE,TRUE
+Michigan,St Clair,Blue Water Energy Center,DTE Energy Co,1,TRUE,FALSE,TRUE,FALSE
+Michigan,St Clair,Blue Water Energy Center,DTE Energy Co,2,TRUE,FALSE,TRUE,FALSE
+Michigan,St Clair,Blue Water Energy Center,DTE Energy Co,3,TRUE,FALSE,TRUE,FALSE
+Michigan,Washtenaw,East. Michigan Univ. Heating Plant,NA,1,TRUE,FALSE,FALSE,FALSE
+Michigan,Washtenaw,University of Michigan,University of Michigan,1,TRUE,FALSE,TRUE,FALSE
+Michigan,Washtenaw County,DTE Gas - Willow Run Compressor Station,DTE Energy,1,FALSE,FALSE,FALSE,TRUE
+Michigan,Washtenaw County,University of Michigan,University of Michigan,1,FALSE,FALSE,FALSE,TRUE
+Michigan,Wayne,Dearborn Energy Center,DTE Electric Company,1,TRUE,FALSE,TRUE,FALSE
+Michigan,Wayne,Dearborn Energy Center,DTE Electric Company,2,TRUE,FALSE,TRUE,FALSE
+Michigan,Wayne,Dearborn Energy Center,DTE Electric Company,3,TRUE,FALSE,TRUE,FALSE
+Minnesota,Blue Earth,Mankato Energy Center,Mankato Energy Center LLC,1,TRUE,FALSE,TRUE,FALSE
+Minnesota,Dakota,Black Dog,Northern States Power Co (Minnesota),1,TRUE,FALSE,TRUE,FALSE
+Minnesota,Dakota,"Flint Hills Resources Pine Bend, LLC","Flint Hills Resources Pine Bend, LLC",1,TRUE,FALSE,TRUE,FALSE
+Minnesota,Dakota,"Flint Hills Resources Pine Bend, LLC","Flint Hills Resources Pine Bend, LLC",2,TRUE,FALSE,TRUE,FALSE
+Mississippi,Hinds,Hinds Energy Facility,Entergy Mississippi LLC,1,TRUE,FALSE,TRUE,FALSE
+Mississippi,Lamar,R D Morrow,NA,1,FALSE,TRUE,FALSE,FALSE
+Mississippi,Lamar,R D Morrow,NA,2,FALSE,TRUE,FALSE,FALSE
+Mississippi,Smith,Georgia-Pacific Taylorsville Plywood,NA,1,TRUE,FALSE,FALSE,FALSE
+Mississippi,Smith County,"Georgia-Pacific Wood Products LLC, Taylorsville","Georgia-Pacific Wood Products LLC, Taylorsville",1,FALSE,FALSE,FALSE,TRUE
+Nebraska,Gage,Northern Natural Gas Co - Beatrice,NORTHERN NATURAL GAS CO,1,FALSE,FALSE,FALSE,TRUE
+Nebraska,Gage,Northern Natural Gas Co - Beatrice,NORTHERN NATURAL GAS CO,2,FALSE,FALSE,FALSE,TRUE
+Nebraska,Sarpy,Turtle Creek,NA,1,FALSE,TRUE,FALSE,FALSE
+Nebraska,Sarpy,Turtle Creek,NA,2,FALSE,TRUE,FALSE,FALSE
+Nevada,Clark,Silverhawk,NA,1,FALSE,TRUE,FALSE,FALSE
+Nevada,Clark,Silverhawk,NA,2,FALSE,TRUE,FALSE,FALSE
+New Jersey,Hudson,Bayonne Energy Center,Bayonne Energy Center LLC,1,TRUE,FALSE,TRUE,FALSE
+New Jersey,Hudson,Bayonne Energy Center,Bayonne Energy Center LLC,2,TRUE,FALSE,TRUE,FALSE
+New Jersey,Mercer,Bristol Myers Squibb Lawrenceville,Bristol-Myers Squibb Co,1,TRUE,FALSE,TRUE,FALSE
+New Jersey,Middlesex,PSEG Sewaren Generating Station,PSEG Fossil LLC,1,TRUE,FALSE,TRUE,FALSE
+New Jersey,Middlesex,PSEG Sewaren Generating Station,PSEG Fossil LLC,2,TRUE,FALSE,TRUE,FALSE
+New Mexico,San Juan,NTEC Gas Plant,NA,1,FALSE,TRUE,FALSE,FALSE
+New Mexico,San Juan,NTEC Gas Plant,NA,2,FALSE,TRUE,FALSE,FALSE
+New Mexico,San Juan,NTEC Gas Plant,NA,3,FALSE,TRUE,FALSE,FALSE
+New York,Albany,Albany Medical Ctr Cogen Plant,NA,1,TRUE,FALSE,FALSE,FALSE
+New York,Dutchess,Cricket Valley Energy,Cricket Valley Energy Center LLC,1,TRUE,FALSE,TRUE,FALSE
+New York,Dutchess,Cricket Valley Energy,Cricket Valley Energy Center LLC,2,TRUE,FALSE,TRUE,FALSE
+New York,Dutchess,Cricket Valley Energy,Cricket Valley Energy Center LLC,3,TRUE,FALSE,TRUE,FALSE
+New York,Dutchess,Cricket Valley Energy,Cricket Valley Energy Center LLC,4,TRUE,FALSE,TRUE,FALSE
+New York,Dutchess,Cricket Valley Energy,Cricket Valley Energy Center LLC,5,TRUE,FALSE,TRUE,FALSE
+New York,Dutchess,Cricket Valley Energy,Cricket Valley Energy Center LLC,6,TRUE,FALSE,TRUE,FALSE
+New York,Herkimer County,TGP COMPRESSOR STATION 245 (West Winfield),TENNESSEE GAS PIPELINE CO,1,FALSE,FALSE,FALSE,TRUE
+New York,Orange,CPV Valley Energy Center,CPV Valley LLC,1,TRUE,FALSE,TRUE,FALSE
+New York,Orange,CPV Valley Energy Center,CPV Valley LLC,2,TRUE,FALSE,TRUE,FALSE
+New York,Orange,CPV Valley Energy Center,CPV Valley LLC,3,TRUE,FALSE,TRUE,FALSE
+New York,Orange,TBE-Montgomery LLC,NA,1,FALSE,TRUE,FALSE,FALSE
+New York,Orange,TBE-Montgomery LLC,NA,2,FALSE,TRUE,FALSE,FALSE
+North Carolina,Buncombe,Asheville,Duke Energy Progress,1,TRUE,FALSE,TRUE,FALSE
+North Carolina,Buncombe,Asheville,Duke Energy Progress,2,TRUE,FALSE,TRUE,FALSE
+North Carolina,Buncombe,Asheville,Duke Energy Progress,3,TRUE,FALSE,TRUE,FALSE
+North Carolina,Buncombe,Asheville,Duke Energy Progress,4,TRUE,FALSE,TRUE,FALSE
+North Carolina,Cleveland,Kings Mountain Energy Center,NTE Energy LLC,1,TRUE,FALSE,TRUE,FALSE
+North Carolina,Cleveland,Kings Mountain Energy Center,NTE Energy LLC,2,TRUE,FALSE,TRUE,FALSE
+North Carolina,Lincoln,Lincoln Combustion,NA,1,FALSE,TRUE,FALSE,FALSE
+North Carolina,Wake,NCSU CCUP Cogeneration Plant,North Carolina State University,1,TRUE,FALSE,TRUE,FALSE
+North Dakota,McKenzie,Lonesome Creek Station,Basin Electric Power Coop,1,TRUE,FALSE,TRUE,FALSE
+North Dakota,Morton,R M Heskett,NA,1,FALSE,TRUE,FALSE,FALSE
+North Dakota,Williams,Pioneer Generation Station,NA,1,FALSE,TRUE,FALSE,FALSE
+North Dakota,Williams,Pioneer Generation Station,NA,2,FALSE,TRUE,FALSE,FALSE
+Ohio,Butler,Middletown Energy Center,Ohio Power Partners LLC,1,TRUE,FALSE,TRUE,FALSE
+Ohio,Butler,Middletown Energy Center,Ohio Power Partners LLC,2,TRUE,FALSE,TRUE,FALSE
+Ohio,Columbiana,South Field Energy,"South Field Energy, LLC",1,TRUE,FALSE,TRUE,FALSE
+Ohio,Columbiana,South Field Energy,"South Field Energy, LLC",2,TRUE,FALSE,TRUE,FALSE
+Ohio,Columbiana,South Field Energy,"South Field Energy, LLC",3,TRUE,FALSE,TRUE,FALSE
+Ohio,Columbiana,South Field Energy,"South Field Energy, LLC",4,TRUE,FALSE,TRUE,FALSE
+Ohio,Guernsey,Guernsey Power Station,NA,1,FALSE,TRUE,FALSE,FALSE
+Ohio,Guernsey,Guernsey Power Station,NA,2,FALSE,TRUE,FALSE,FALSE
+Ohio,Guernsey,Guernsey Power Station,NA,3,FALSE,TRUE,FALSE,FALSE
+Ohio,Monroe,Long Ridge Energy Generation,Long Ridge Energy Generation LLC,1,TRUE,FALSE,TRUE,FALSE
+Ohio,Trumbull,"Clean Energy Future-Lordstown, LLC",Clean Energy Future Lordstown LLC,1,TRUE,FALSE,TRUE,FALSE
+Ohio,Trumbull,"Clean Energy Future-Lordstown, LLC",Clean Energy Future Lordstown LLC,2,TRUE,FALSE,TRUE,FALSE
+Ohio,Trumbull,"Clean Energy Future-Lordstown, LLC",Clean Energy Future Lordstown LLC,3,TRUE,FALSE,TRUE,FALSE
+Ohio,Trumbull,Trumbull Energy Center,NA,1,FALSE,TRUE,FALSE,FALSE
+Ohio,Trumbull,Trumbull Energy Center,NA,2,FALSE,TRUE,FALSE,FALSE
+Ohio,Trumbull,Trumbull Energy Center,NA,3,FALSE,TRUE,FALSE,FALSE
+Ohio,Warren County,Texas Eastern Transmission - Lebanon (1483060328),Texas Eastern Transmission - Lebanon (1483060328),1,FALSE,FALSE,FALSE,TRUE
+Oklahoma,Mayes,GREC,NA,1,FALSE,TRUE,FALSE,FALSE
+Pennsylvania,Beaver,Shell Chemical Appalachia LLC,Shell Chemical Appalachia LLC,1,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Beaver,Shell Chemical Appalachia LLC,Shell Chemical Appalachia LLC,2,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Beaver,Shell Chemical Appalachia LLC,Shell Chemical Appalachia LLC,3,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Beaver,Shell Chemical Appalachia LLC,Shell Chemical Appalachia LLC,4,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Beaver,Shell Chemical Appalachia LLC,Shell Chemical Appalachia LLC,5,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Berks,Birdsboro Power,Birdsboro Power LLC,1,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Cambria,CPV Fairview Energy Center,CPV Fairview LLC,1,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Cambria,CPV Fairview Energy Center,CPV Fairview LLC,2,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Cambria,CPV Fairview Energy Center,CPV Fairview LLC,3,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Centre,West Campus Steam Plant,NA,1,TRUE,FALSE,FALSE,FALSE
+Pennsylvania,Delaware,Chester Operations,Kimberly Clark Corp,1,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Delaware,Chester Operations,Kimberly-Clark Corp,2,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Delaware,Chester Operations,Kimberly-Clark Corp,3,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Delaware,Chester Operations,Kimberly-Clark Corp,4,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Greene,"Hill Top Energy Center, LLC","Hill Top Energy Center, LLC",1,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Juniata,Perulack Compressor Station,Texas Eastern Transmission,1,FALSE,FALSE,FALSE,TRUE
+Pennsylvania,Juniata,Perulack Compressor Station,Texas Eastern Transmission,2,FALSE,FALSE,FALSE,TRUE
+Pennsylvania,Lackawanna,Lackawanna Energy Center,Invenergy Thermal Development LLC,1,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Lackawanna,Lackawanna Energy Center,Lackawanna Energy Center LLC,2,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Lackawanna,Lackawanna Energy Center,Lackawanna Energy Center LLC,3,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Lawrence,Hickory Run Energy Station,Hickory Run Energy LLC,1,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Lawrence,Hickory Run Energy Station,Hickory Run Energy LLC,2,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Lawrence,Hickory Run Energy Station,Hickory Run Energy LLC,3,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Luzerne,Moxie Freedom Generation Plant,Moxie Freedom LLC,1,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Luzerne,Moxie Freedom Generation Plant,Moxie Freedom LLC,2,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Snyder,Hummel Station LLC,Hummel Generation LLC,1,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Snyder,Hummel Station LLC,Hummel Generation LLC,2,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Snyder,Hummel Station LLC,Hummel Generation LLC,3,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Snyder,Hummel Station LLC,Hummel Generation LLC,4,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Westmoreland,Tenaska Westmoreland Generating Station,Tenaska Pennsylvania Partners LLC,1,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Westmoreland,Tenaska Westmoreland Generating Station,Tenaska Pennsylvania Partners LLC,2,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,Westmoreland,Tenaska Westmoreland Generating Station,Tenaska Pennsylvania Partners LLC,3,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,York,York Energy Center,Calpine Mid Merit II LLC,1,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,York,York Energy Center,Calpine Mid Merit II LLC,2,TRUE,FALSE,TRUE,FALSE
+Pennsylvania,York,York Energy Center,Calpine Mid Merit II LLC,3,TRUE,FALSE,TRUE,FALSE
+South Carolina,Anderson,W S Lee,Duke Energy Carolinas,1,TRUE,FALSE,TRUE,FALSE
+South Carolina,Anderson,W S Lee,Duke Energy Carolinas,2,TRUE,FALSE,TRUE,FALSE
+South Carolina,Anderson,W S Lee,Duke Energy Carolinas,3,TRUE,FALSE,TRUE,FALSE
+South Carolina,Beaufort,MCRD Parris Island PV Hybrid,Ameresco Federal Solutions Inc,1,TRUE,FALSE,TRUE,FALSE
+South Carolina,Berkeley,Bushy Park Combustion Turbine Facility,NA,1,FALSE,TRUE,FALSE,FALSE
+South Carolina,Fairfield,Parr GT,NA,1,FALSE,TRUE,FALSE,FALSE
+South Carolina,Fairfield,Parr GT,NA,2,FALSE,TRUE,FALSE,FALSE
+South Carolina,Pickens,Duke Energy CHP at Clemson University,Duke Energy Carolinas,1,TRUE,FALSE,TRUE,FALSE
+South Dakota,Deuel,Astoria Station,Otter Tail Power Co,1,TRUE,FALSE,TRUE,FALSE
+Tennessee,Haywood County,"ANR PIPELINE COMPANY, BROWNSVILLE","ANR PIPELINE COMPANY, BROWNSVILLE",1,FALSE,FALSE,FALSE,TRUE
+Tennessee,Shelby,Allen,Tennessee Valley Authority,1,TRUE,FALSE,TRUE,FALSE
+Tennessee,Shelby,Allen,Tennessee Valley Authority,2,TRUE,FALSE,TRUE,FALSE
+Tennessee,Shelby,Allen,Tennessee Valley Authority,3,TRUE,FALSE,TRUE,FALSE
+Texas,Brazoria,Brotman Power Station,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Brazoria,Brotman Power Station,NA,2,FALSE,TRUE,FALSE,FALSE
+Texas,Brazoria,Brotman Power Station,NA,3,FALSE,TRUE,FALSE,FALSE
+Texas,Brazoria,Brotman Power Station,NA,4,FALSE,TRUE,FALSE,FALSE
+Texas,Brazoria,Brotman Power Station,NA,5,FALSE,TRUE,FALSE,FALSE
+Texas,Brazoria,Brotman Power Station,NA,6,FALSE,TRUE,FALSE,FALSE
+Texas,Brazoria,Freeport LP Pretreatment Facility,Freeport LNG Development,1,TRUE,FALSE,TRUE,FALSE
+Texas,Brazoria,Mark One Power Station,ProEnergy Services,1,TRUE,FALSE,TRUE,FALSE
+Texas,Brazoria,Mark One Power Station,ProEnergy Services,2,TRUE,FALSE,TRUE,FALSE
+Texas,Brazoria,Mark One Power Station,ProEnergy Services,3,TRUE,FALSE,TRUE,FALSE
+Texas,Brazoria,Mark One Power Station,ProEnergy Services,4,TRUE,FALSE,TRUE,FALSE
+Texas,Brazoria,Mark One Power Station,ProEnergy Services,5,TRUE,FALSE,TRUE,FALSE
+Texas,Brazoria,Mark One Power Station,ProEnergy Services,6,TRUE,FALSE,TRUE,FALSE
+Texas,Brazoria,Power Island,INEOS USA LLC,1,TRUE,FALSE,TRUE,FALSE
+Texas,Brazoria,Power Island,INEOS USA LLC,2,TRUE,FALSE,TRUE,FALSE
+Texas,Brazos,Central Utility Plant - Texas A&M,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Calhoun,Formosa Utility Venture Ltd,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Calhoun,Formosa Utility Venture Ltd,NA,2,FALSE,TRUE,FALSE,FALSE
+Texas,Calhoun,Formosa Utility Venture Ltd,NA,3,FALSE,TRUE,FALSE,FALSE
+Texas,Cameron,Aegle Power,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Cameron,Aegle Power,NA,2,FALSE,TRUE,FALSE,FALSE
+Texas,Cameron,Aegle Power,NA,3,FALSE,TRUE,FALSE,FALSE
+Texas,El Paso,Newman,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Fort Bend,Braes Bayou Plant,"Braes Bayou Generating, LLC",1,TRUE,FALSE,TRUE,FALSE
+Texas,Fort Bend,Braes Bayou Plant,"Braes Bayou Generating, LLC",2,TRUE,FALSE,TRUE,FALSE
+Texas,Fort Bend,Braes Bayou Plant,"Braes Bayou Generating, LLC",3,TRUE,FALSE,TRUE,FALSE
+Texas,Fort Bend,Braes Bayou Plant,"Braes Bayou Generating, LLC",4,TRUE,FALSE,TRUE,FALSE
+Texas,Fort Bend,Braes Bayou Plant,"Braes Bayou Generating, LLC",5,TRUE,FALSE,TRUE,FALSE
+Texas,Fort Bend,Braes Bayou Plant,"Braes Bayou Generating, LLC",6,TRUE,FALSE,TRUE,FALSE
+Texas,Fort Bend,Braes Bayou Plant,"Braes Bayou Generating, LLC",7,TRUE,FALSE,TRUE,FALSE
+Texas,Fort Bend,Braes Bayou Plant,"Braes Bayou Generating, LLC",8,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Bacliff,NRG Texas LLC,1,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Bacliff,NRG Texas LLC,2,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Bacliff,NRG Texas LLC,3,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Bacliff,NRG Texas LLC,4,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Bacliff,NRG Texas LLC,5,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Bacliff,NRG Texas LLC,6,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Topaz Generating,"Topaz Generating, LLC",1,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Topaz Generating,"Topaz II, LLC",2,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Topaz Generating,"Topaz Generating, LLC",3,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Topaz Generating,"Topaz Generating, LLC",4,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Topaz Generating,"Topaz Generating, LLC",5,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Topaz Generating,"Topaz Generating, LLC",6,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Topaz Generating,"Topaz Generating, LLC",7,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Topaz Generating,"Topaz Generating, LLC",8,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Topaz Generating,"Topaz II, LLC",9,TRUE,FALSE,TRUE,FALSE
+Texas,Galveston,Topaz Generating,"Topaz II, LLC",10,TRUE,FALSE,TRUE,FALSE
+Texas,Guadalupe,Guadalupe Generating Station,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Guadalupe,Guadalupe Generating Station,NA,2,FALSE,TRUE,FALSE,FALSE
+Texas,Harris,Friendswood Energy,Friendswood Energy Genco,1,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,HO Clarke Generating,"HO Clarke Generating, LLC",1,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,HO Clarke Generating,"HO Clarke Generating, LLC",2,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,HO Clarke Generating,"HO Clarke Generating, LLC",3,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,HO Clarke Generating,"HO Clarke Generating, LLC",4,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,HO Clarke Generating,"HO Clarke Generating, LLC",5,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,HO Clarke Generating,"HO Clarke Generating, LLC",6,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,HO Clarke Generating,"HO Clarke II, LLC",7,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,HO Clarke Generating,"HO Clarke II, LLC",8,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,NASA Johnson Space Center CHP,Energy Systems Group,1,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,NASA Johnson Space Center CHP,Energy Systems Group,2,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,NET Power La Porte Station,NET Power LLC,1,FALSE,TRUE,TRUE,FALSE
+Texas,Harris,NRG THW GT Electric Generating Station,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Harris,NRG THW GT Electric Generating Station,NA,2,FALSE,TRUE,FALSE,FALSE
+Texas,Harris,Remy Jade Power Station,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Harris,Remy Jade Power Station,NA,2,FALSE,TRUE,FALSE,FALSE
+Texas,Harris,Remy Jade Power Station,NA,3,FALSE,TRUE,FALSE,FALSE
+Texas,Harris,Remy Jade Power Station,NA,4,FALSE,TRUE,FALSE,FALSE
+Texas,Harris,Remy Jade Power Station,NA,5,FALSE,TRUE,FALSE,FALSE
+Texas,Harris,Remy Jade Power Station,NA,6,FALSE,TRUE,FALSE,FALSE
+Texas,Harris,Remy Jade Power Station,NA,7,FALSE,TRUE,FALSE,FALSE
+Texas,Harris,Remy Jade Power Station,NA,8,FALSE,TRUE,FALSE,FALSE
+Texas,Harris,SJRR Power LLC,SJRR,1,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,SJRR Power LLC,SJRR,2,TRUE,FALSE,TRUE,FALSE
+Texas,Harris,TECO CHP-1,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Mitchell,FGE Texas I,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Mitchell,FGE Texas I,NA,2,FALSE,TRUE,FALSE,FALSE
+Texas,Mitchell,FGE Texas I,NA,3,FALSE,TRUE,FALSE,FALSE
+Texas,Mitchell,FGE Texas II,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Mitchell,FGE Texas II,NA,2,FALSE,TRUE,FALSE,FALSE
+Texas,Mitchell,FGE Texas II,NA,3,FALSE,TRUE,FALSE,FALSE
+Texas,Montgomery,Montgomery County,Entergy Texas Inc.,1,TRUE,FALSE,TRUE,FALSE
+Texas,Montgomery,Montgomery County,Entergy Texas Inc.,2,TRUE,FALSE,TRUE,FALSE
+Texas,Montgomery,Montgomery County,Entergy Texas Inc.,3,TRUE,FALSE,TRUE,FALSE
+Texas,Orange,Orange County Advanced Power Station,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Orange,Orange County Advanced Power Station,NA,2,FALSE,TRUE,FALSE,FALSE
+Texas,Orange,Orange County Advanced Power Station,NA,3,FALSE,TRUE,FALSE,FALSE
+Texas,Victoria,Tres City Power LLC,Victoria City Power LLC,1,TRUE,FALSE,TRUE,FALSE
+Texas,Victoria,Tres City Power LLC,Victoria City Power LLC,2,TRUE,FALSE,TRUE,FALSE
+Texas,Victoria,"Tres Port Power, LLC",Victoria Port Power LLC,1,TRUE,FALSE,TRUE,FALSE
+Texas,Victoria,"Tres Port Power, LLC",Victoria Port Power LLC,2,TRUE,FALSE,TRUE,FALSE
+Texas,Victoria,Victoria Port Power II LLC,Victoria Port Power II,1,TRUE,FALSE,TRUE,FALSE
+Texas,Victoria,Victoria Port Power II LLC,Victoria Port Power II,2,TRUE,FALSE,TRUE,FALSE
+Texas,Wharton,Colorado Bend Energy Center,NA,1,FALSE,TRUE,FALSE,FALSE
+Texas,Wharton,Colorado Bend Energy Center,NA,2,FALSE,TRUE,FALSE,FALSE
+Utah,Millard,Intermountain Power Project,NA,1,FALSE,TRUE,FALSE,FALSE
+Utah,Millard,Intermountain Power Project,NA,2,FALSE,TRUE,FALSE,FALSE
+Utah,Utah,BYU Central Heating Plant,Brigham Young University (BYU),1,TRUE,FALSE,TRUE,FALSE
+Virginia,Greensville,Greensville County Power Station,Dominion Virginia Power,1,TRUE,FALSE,TRUE,FALSE
+Virginia,Greensville,Greensville County Power Station,Dominion Virginia Power,2,TRUE,FALSE,TRUE,FALSE
+Virginia,Greensville,Greensville County Power Station,Dominion Virginia Power,3,TRUE,FALSE,TRUE,FALSE
+Virginia,Greensville,Greensville County Power Station,Dominion Virginia Power,4,TRUE,FALSE,TRUE,FALSE
+Virginia,Hanover,Doswell Energy Center,Doswell II LLC,1,TRUE,FALSE,TRUE,FALSE
+Virginia,Hanover,Doswell Energy Center,Doswell II LLC,2,TRUE,FALSE,TRUE,FALSE
+Virginia,Norfolk City,Naval Station Norfolk (NAVSTA Norfolk),Naval Station Norfolk (NAVSTA Norfolk),1,FALSE,FALSE,FALSE,TRUE
+West Virginia,Harrison,ESC Harrison County Power,NA,1,FALSE,TRUE,FALSE,FALSE
+West Virginia,Harrison,ESC Harrison County Power,NA,2,FALSE,TRUE,FALSE,FALSE
+West Virginia,Randolph County,Columbia Gas - FILES CREEK 6C4340,"COLUMBIA GAS TRANSMISSION, LLC",1,FALSE,FALSE,FALSE,TRUE
+West Virginia,Randolph County,Columbia Gas - FILES CREEK 6C4340,"COLUMBIA GAS TRANSMISSION, LLC",2,FALSE,FALSE,FALSE,TRUE
+West Virginia,Randolph County,Columbia Gas - FILES CREEK 6C4340,"COLUMBIA GAS TRANSMISSION, LLC",3,FALSE,FALSE,FALSE,TRUE
+West Virginia,Randolph County,Columbia Gas - FILES CREEK 6C4340,"COLUMBIA GAS TRANSMISSION, LLC",4,FALSE,FALSE,FALSE,TRUE
+West Virginia,Upshur County,Columbia Gas - CLEVELAND 6C4330,"COLUMBIA GAS TRANSMISSION, LLC",1,FALSE,FALSE,FALSE,TRUE
+West Virginia,Upshur County,Columbia Gas - CLEVELAND 6C4330,"COLUMBIA GAS TRANSMISSION, LLC",2,FALSE,FALSE,FALSE,TRUE
+West Virginia,Upshur County,Columbia Gas - CLEVELAND 6C4330,"COLUMBIA GAS TRANSMISSION, LLC",3,FALSE,FALSE,FALSE,TRUE
+West Virginia,Upshur County,Columbia Gas - CLEVELAND 6C4330,"COLUMBIA GAS TRANSMISSION, LLC",4,FALSE,FALSE,FALSE,TRUE
+West Virginia,Wayne,Ceredo Compressor Station,"COLUMBIA GAS TRANSMISSION, LLC",1,FALSE,FALSE,FALSE,TRUE
+Wisconsin,Rock,West Riverside Energy Center,Hanwha Q Cells USA Corp,1,TRUE,FALSE,TRUE,FALSE
+Wisconsin,Rock,West Riverside Energy Center,Hanwha Q Cells USA Corp,2,TRUE,FALSE,TRUE,FALSE
+Wisconsin,Rock,West Riverside Energy Center,Hanwha Q Cells USA Corp,3,TRUE,FALSE,TRUE,FALSE
+Wisconsin,Rock County,WPL - RIVERSIDE ENERGY CENTER,Riverside Energy Center LLC,1,FALSE,FALSE,FALSE,TRUE
+Wisconsin,Rock County,WPL - RIVERSIDE ENERGY CENTER,Riverside Energy Center LLC,2,FALSE,FALSE,FALSE,TRUE
+NA,District of Columbia,"AOC, Capitol Power Plant",NA,1,TRUE,FALSE,FALSE,FALSE
+NA,Toa Baja,"Puerto Rico Electric Power Authority, Palo Seco","Puerto Rico Electric Power Authority, Palo Seco",1,FALSE,FALSE,FALSE,TRUE
+NA,Toa Baja,"Puerto Rico Electric Power Authority, Palo Seco","Puerto Rico Electric Power Authority, Palo Seco",2,FALSE,FALSE,FALSE,TRUE
+NA,Toa Baja,"Puerto Rico Electric Power Authority, Palo Seco","Puerto Rico Electric Power Authority, Palo Seco",3,FALSE,FALSE,FALSE,TRUE

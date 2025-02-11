@@ -1,0 +1,7 @@
+Report Type: Emissions Summaries by Emissions Unit
+Data Set: 2018EPA_EGU
+Pollutant: NOX
+Reporting Period Type: Annual
+Tagged Data Handling: Not Tagged and Tagged included
+Emissions Operating Type: Routine
+Columns Selected: State, FIPS State Code, Tribal Name, FIPS Code, County, EIS Facility ID, Program System Code, Agency Facility ID, Company Name, Site Name, Primary NAICS Code, Facility Source Type, Site Latitude, Site Longitude, Facility Status, Facility Status Year, EIS Unit ID, Agency Unit ID, Unit Type, Unit Description, Design Capacity, Design Capacity UOM, Unit Status, Unit Status Year, Permit Status Start Year, Permit Status End Year, Reporting Period, Emissions Operating Type, Pollutant Code, Pollutant Desc, Total Emissions, Emissions UOM, Data Set

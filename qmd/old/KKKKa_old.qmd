@@ -1,0 +1,1128 @@
+---
+title: "KKKKa Combustion Turbine Analysis"
+author: "Nick Sayresmith"
+date: last-modified
+format: 
+  html: 
+    toc: true
+    toc-location: right
+    number-sections: true
+    code-fold: true
+    code-tools: true
+    fig-width: 8
+    fig-asp: 0.618
+    out-width: "70%"
+    fig-align: center
+    fig-format: png
+    embed-resources: true
+execute:
+  echo: true
+  warning: false
+editor_options: 
+  chunk_output_type: console
+---
+
+Analysis is to help support KKKKa. Joining EIA860 - Operable, EIA860 - Proposed, NEEDS, and NESHAP combustion turbine data into single table. Using data to do projection of new units, determine baseline emission controls, and estimate small business impacts. Data is filtered to new units 2019 - 2023.
+
+## Libraries
+
+```{r}
+#| label: libraries
+
+library(tidyverse)
+library(readxl)
+library(magrittr)
+library(here)
+library(knitr)
+library(RcppAlgos)
+```
+
+## Read
+
+Files provided by Christian Fellner in Preamble folder.
+
+```{r}
+#| label: FUNCTION-my-name-repair
+
+my_name_repair <- function(col_name) {
+  
+  c_escape_underscore <- c(".", "-", "&") %>% 
+    str_c("\\", ., collapse = "|")
+  
+  c_nonescape_underscore <- c("\r\n") %>% 
+    str_c(., collapse = "|")
+  
+  c_replace_underscore <- str_c(c_escape_underscore, "|",
+                                c_nonescape_underscore
+                                )
+  
+  c_escape_remove <- c("(", ")", "?") %>% 
+    str_c("\\", ., collapse = "|")
+  
+  col_name %>% 
+    str_replace_all(c_replace_underscore, "_") %>% 
+    str_replace_all("\\/", "_per_") %>% 
+    str_replace_all(c_escape_remove, "") %>% 
+    str_replace_all("__+", "_") %>% 
+    str_replace_all("_$", "") %>% 
+    str_to_lower()
+}
+```
+
+```{r}
+#| label: read-EIA860-gen
+#| cache: true
+
+path_EIA860 <- "input/eia8602023"
+file_EIA860_gen <- here(path_EIA860, "3_1_Generator_Y2023.xlsx")
+
+ls_sheets_EIA860_gen <- excel_sheets(file_EIA860_gen)
+
+tb_EIA_raw <- read_excel(file_EIA860_gen, "Operable", skip = 1,
+                         .name_repair = "universal"
+                         ) %>% 
+  rename_with(my_name_repair)
+
+tb_EIA_proposed_raw <- read_excel(file_EIA860_gen, "Proposed", skip = 1,
+                                  .name_repair = "universal"
+                                  ) %>% 
+  rename_with(my_name_repair)
+```
+
+```{r}
+#| label: read-EIA860-equip
+#| cache: true
+
+file_EIA860_equip <- here(path_EIA860, "6_2_EnviroEquip_Y2023.xlsx")
+
+ls_sheets_EIA860_equip <- excel_sheets(file_EIA860_equip)
+
+tb_EIA_equip_raw <- read_excel(file_EIA860_equip, 
+                               "Emission Standards & Strategies", skip = 1,
+                               .name_repair = "universal"
+                         ) %>% 
+  rename_with(my_name_repair)
+```
+
+```{r}
+#| label: read-EIA860-id
+#| cache: true
+
+file_EIA860_id <- here(path_EIA860, "6_1_EnviroAssoc_Y2023.xlsx")
+
+ls_sheets_EIA860_id <- excel_sheets(file_EIA860_id)
+
+tb_EIA_id_raw <- read_excel(file_EIA860_id,
+                            "Boiler Generator",
+                            skip = 1,
+                            .name_repair = "universal") %>%
+  rename_with(my_name_repair)
+```
+
+```{r}
+#| label: read-EIA860-plant-details
+#| cache: true
+
+file_EIA860_plant <- here(path_EIA860, "2___Plant_Y2023.xlsx")
+
+ls_sheets_EIA860_id <- excel_sheets(file_EIA860_plant)
+
+tb_EIA_plant_raw <- read_excel(file_EIA860_plant,
+                            "Plant",
+                            skip = 1,
+                            .name_repair = "universal") %>%
+  rename_with(my_name_repair)
+```
+
+```{r}
+#| label: read-NEEDS
+#| cache: true
+
+path_NEEDS <- here("input/NEEDS Recent Combustion Turbines 30 Sep 2024.xlsx")
+
+ls_sheets_NEEDS <- excel_sheets(path_NEEDS)
+
+tb_NEEDS_raw <- read_excel(path_NEEDS, "NEEDS Active ",
+                           .name_repair = "universal"
+                           ) %>% 
+  rename_with(my_name_repair)
+```
+
+The NESHAP list does not have 2023 units, but we still want a 5-year average. Consequently, we use 2018 - 2022 for NESHAP. Note that the other lists use 2019 - 2023. Also unlike the other lists, the NESHAP list was pre-filtered in Excel. This is because the year column had mixed data types that made filtering the raw file difficult to do in R.
+
+```{r}
+#| label: read-NESHAP
+#| cache: true
+
+path_NESHAP <- here("input/Turbine NESHAP Unit List - Updated September 2024.xlsx")
+
+ls_sheets_NESHAP <- excel_sheets(path_NESHAP)
+
+tb_NESHAP_raw <- read_xlsx(path_NESHAP, "post_2018",
+                           .name_repair = "universal",
+                            ) %>%
+  rename_with(my_name_repair)
+```
+
+```{r}
+#| label: read-entity-type
+
+# comes from EIA-860 Schedule 1
+path_new_CT <- here("input/eia8602023/1___Utility_Y2023.xlsx")
+
+df_EIA860_utility <- read_excel(path_new_CT, skip = 1,
+                                .name_repair = "universal"
+                                ) %>% 
+  rename_with(my_name_repair)
+
+# Definitions were deduced by cross-referencing EIA 860 2022 Schedule 1 with
+# Schedule 3 and the LayoutY2022.xlsx file. Assumed applicable to 2023.
+tb_entity_codes <- 
+  tribble(
+    ~entity_code, ~entity,
+    "C", "Cooperative",
+    "COM", "Commercial",
+    "F", "Federal",
+    "I", "Invester-owned utility",
+    "IND", "Industrial",
+    "M", "Municipal",
+    "P", "Political Subdivision",
+    "Q", "Independent Power Producer",
+    "S", "State"
+  )
+
+df_EIA860_entity <- df_EIA860_utility %>% 
+  left_join(tb_entity_codes, join_by(entity_type == entity_code)) %>% 
+  select(utility_id, entity)
+```
+
+```{r}
+#| label: read-CAPD-facility
+
+file_capd_2023 <- here("input/CAPD Data 2023 Oct 2024.xlsx")
+sheet_capd_2023 <- "CAMD Facility Data 2023"
+range_capd_2023 = "A:AF"
+
+tb_CAPD_2023_raw <- file_capd_2023 %>% 
+  read_excel(sheet_capd_2023, 
+             range = cell_cols(range_capd_2023),
+             .name_repair = "universal"
+             ) %>% 
+  rename_with(my_name_repair)
+```
+
+```{r}
+#| label: read-CAPD-data
+
+sheet_capd_data_2023 <- "CAMD Data 2023"
+range_capd_data_2023 = "A:Y"
+
+tb_CAPD_data_2023_raw <- file_capd_2023 %>% 
+  read_excel(sheet_capd_data_2023, 
+             range = cell_cols(range_capd_data_2023),
+             .name_repair = "universal"
+             ) %>% 
+  rename_with(my_name_repair)
+```
+
+## Wrangle
+
+Some data sources use state abbreviations and some do not. Constructed tibble using state dataset from *datasets* package. This analysis uses full state names.
+
+A "unit" column was artificially created to distinguish the presence of multiple units at a single facility. 
+
+```{r}
+#| label: state-codes
+
+tb_states <- 
+  tibble(state = state.name,
+         state_abb = state.abb)
+```
+
+### EIA-Operable
+
+```{r}
+#| label: EIA-equip-wrangle
+
+tb_EIA_equip <- tb_EIA_equip_raw %>% 
+  unite("has_SCR_EIA", 
+        starts_with("nitrogen_oxide_control_existing_strategy"), 
+        na.rm = T
+        ) %>% 
+  mutate(has_SCR_EIA = str_detect(has_SCR_EIA, "SR")) %>% 
+  inner_join(tb_EIA_id_raw, join_by(plant_code, boiler_id)) %>% 
+  select(plant_code, boiler_id, generator_id, has_SCR_EIA)
+```
+
+Applicability is based only on the turbine portion, so the lists need to be filtered to prime movers GT, CT, or CS that were first online 2019-2023. New CAs don't matter. The EIA list is the only list that gives granular enough prime mover details; the other lists only classify on "combined cycle" or "combustion turbine". Fortunately CAPD and NESHAP already combine CTs and CAs, and the online date should refer to the CT part. NEEDS is like EIA but not granular, so would need to join EIA and NEEDS before date filter. This would only apply to shared generators. Luckily, NEEDS is a proper subset of EIA, so that won't be an issue. I will make this update this at a later date. 
+
+```{r}
+#| label: EIA-wrangle
+
+c_filter_operable <- c(
+  year_start = 2019L,
+  year_end = 2023L,
+  prime_mover = "GT|CT|CS"
+)
+
+# Setting empty unit codes to be same as their corresponding generator id 
+tb_EIA_fix_gen <- tb_EIA_raw %>% 
+  filter(!is.na(generator_id)) %>% 
+  mutate(unit_code = 
+           case_when(
+             is.na(unit_code) ~ generator_id,
+             !is.na(unit_code) ~ unit_code
+           ))
+
+tb_EIA <- tb_EIA_fix_gen %>% 
+  left_join(tb_EIA_equip, join_by(plant_code, generator_id)) %>% 
+  distinct(plant_code, unit_code, has_SCR_EIA) %>%
+  filter(!is.na(has_SCR_EIA)) %>% 
+  right_join(tb_EIA_fix_gen, join_by(plant_code, unit_code),
+             relationship = "many-to-many"
+             ) %>% 
+  relocate(has_SCR_EIA, .after = prime_mover) %>% 
+  left_join(tb_EIA_plant_raw %>% select(plant_code, latitude, longitude),
+            join_by(plant_code), relationship = "many-to-many"
+            ) %>% 
+  relocate(plant_code, unit_code, .before = generator_id) %>% 
+  rename(state_abb = state) %>% 
+  left_join(tb_states, join_by(state_abb)) %>% 
+  select(-state_abb) %>% 
+  relocate(utility_id, utility_name, state, county) %>% 
+  relocate(unit_code, generator_id, .before = prime_mover) %>% 
+  arrange(plant_code, unit_code, prime_mover, generator_id)
+```
+
+```{r}
+#| label: EIA-filter
+
+# EIA SCR info should only pertain to CAs (per 860 Sched. 6 instructions). 
+# Want to extend to their CT counterparts, while also allowing for any other prime
+# movers that might have info
+tb_EIA_filtered <- tb_EIA %>%
+  group_by(plant_code, unit_code) %>% 
+  # any() makes sure to also grab old CA(s) if only the CT is new
+  filter(any(between(operating_year, 
+                     as.double(c_filter_operable[["year_start"]]), 
+                     as.double(c_filter_operable[["year_end"]])
+                     ) &
+               str_detect(prime_mover, c_filter_operable[["prime_mover"]])
+             )
+         ) %>% 
+  ungroup()
+
+tb_EIA_reduced <- tb_EIA_filtered %>% 
+  select(plant_code, plant_name, state, county) %>%
+  mutate(EIA = T) %>% 
+  group_by(plant_code) %>% 
+  mutate(unit = seq(n()), .before = EIA) %>% 
+  ungroup()
+```
+
+### EIA-Proposed, NEEDS, NESHAP
+
+```{r}
+#| label: EIA-proposed-filter
+
+c_filter_proposed <- c(
+  year_start = 2019L,
+  year_end = 2023L,
+  prime_mover = "GT|CT|CA|CS"
+)
+
+# Proposed list doesn't have unit_codes for the most part 
+tb_EIA_proposed_filtered <- tb_EIA_proposed_raw %>%
+  filter(str_detect(prime_mover, c_filter_proposed[["prime_mover"]])) %>% 
+  rename(state_abb = state) %>% 
+  left_join(tb_states, join_by(state_abb)) %>% 
+  select(-state_abb) %>% 
+  relocate(state, county)
+
+tb_EIA_proposed_reduced <- tb_EIA_proposed_filtered  %>% 
+  select(plant_code, plant_name, state, county) %>%
+  mutate(EIA_proposed = T) %>%  
+  group_by(plant_code) %>% 
+  mutate(unit = seq(n()), .before = EIA_proposed) %>% 
+  ungroup()
+```
+
+```{r}
+#| label: NEEDS-wrangle
+
+c_filter_NEEDS <- c(
+  year_start = 2019L,
+  year_end = 2023L,
+  prime_mover = "(Combustion Turbine)|(Combined Cycle)"
+)
+
+tb_NEEDS <- tb_NEEDS_raw %>% 
+  rename(plant_code = oris_plant_code,
+         generator_id = unit_id,
+         state = state_name
+         ) %>% 
+  mutate(has_SCR_NEEDS = !is.na(nox_post_comb_control)) %>% 
+  arrange(plant_code, generator_id)
+
+tb_NEEDS_filtered <- tb_NEEDS %>%
+  filter(between(on_line_year, 
+                 as.double(c_filter_NEEDS[["year_start"]]), 
+                 as.double(c_filter_NEEDS[["year_end"]])
+                 )
+         ) %>% 
+  filter(str_detect(planttype, c_filter_NEEDS[["prime_mover"]]))
+  
+tb_NEEDS_reduced <- tb_NEEDS_filtered %>% 
+  select(plant_code, plant_name, state, county
+         ) %>%
+  mutate(NEEDS = T) %>% 
+  relocate(state, county) %>% 
+  group_by(plant_code) %>% 
+  mutate(unit = seq(n()), .before = NEEDS) %>% 
+  ungroup()
+```
+
+In contrast to EIA and NEEDS, the CTs and CAs in NESHAP are already combined. Splitting them apart would be involved, if not impossible. Consequently, the NESHAP data is left as-is. The NESHAP data is small enough that not splitting the CT/CAs has little impact on the anlaysis, if any.
+
+```{r}
+#| label: NESHAP-wrangle
+
+tb_NESHAP <- tb_NESHAP_raw %>% 
+  rename(plant_code = orispl,
+         plant_name = facility_name,
+         owner_name = owner_operator_needs_frs_facility_name, 
+         state_abb = state_abbr, 
+         county = county_name 
+         ) %>% 
+  mutate(plant_code = as.integer(plant_code),
+         county = str_remove_all(county, " [Cc]ounty")
+         ) %>% 
+  left_join(tb_states, join_by(state_abb)) %>% 
+  select(-state_abb) %>% 
+  relocate(state, county) %>% 
+  mutate(has_SCR_NESHAP = str_detect(permit_emission_controls, "SCR"),
+         has_SCR_NESHAP = replace_na(has_SCR_NESHAP, F)
+         )
+
+tb_NESHAP_reduced <- tb_NESHAP %>% 
+  select(state, county, plant_code, plant_name) %>% 
+  mutate(NESHAP = T) %>% 
+  group_by(state, county, plant_name) %>% 
+  mutate(unit = seq(n()), .before = NESHAP) %>% 
+  ungroup()
+```
+
+### CAPD
+
+In CAPD CTs and CAs are already combined. They need to be separated so that CAPD data can be compared to EIA and NEEDS.
+
+```{r}
+#| label: FUNCTION-print-colnames
+
+print_colnames <- function(tb) {
+  tb %>% colnames() %>% cat(sep = "\", \"")
+}
+```
+
+```{r}
+#| label: CAPD-colnames
+
+c_colnames_CAPD_facility <- c(
+  "state", "facility_name", "facility_id", "unit_id_4", "associated_stacks", 
+  "year", "program_code", "primary_rep_info", "epa_region", "nerc_region", 
+  "county", "county_code", "fips_code", "source_category", 
+  "latitude", "longitude", "owner_operator", "so2_phase", "nox_phase", 
+  "unit_type", "primary_fuel_type", "secondary_fuel_type", "so2_controls", 
+  "nox_controls", "pm_controls", "hg_controls", "commercial_operation_date", 
+  "operating_status", "max_hourly_hi_rate_mmbtu_hr",
+  "associated_generators_nameplate_capacity_mwe", 
+  "unit_id_31", "nameplate_capacity_mwe"
+)
+
+c_colnames_CAPD_data <- c(
+  "state", "facility_name", "facility_id", "unit_id", "associated_stacks", 
+  "year", "operating_time_count", "sum_of_the_operating_time", "gross_load_mwh",
+  "steam_load_1000_lb", "so2_mass_short_tons", "so2_rate_lbs_mmbtu", 
+  "co2_mass_short_tons", "co2_rate_short_tons_mmbtu", "nox_mass_short_tons",
+  "nox_rate_lbs_mmbtu", "heat_input_mmbtu", "primary_fuel_type", 
+  "secondary_fuel_type", "unit_type", "so2_controls", "nox_controls", 
+  "pm_controls", "hg_controls", "program_code"
+)
+```
+
+```{r}
+#| label: join-CAPDs
+
+c_colnames_CAPD_data_reduced <- 
+  c_colnames_CAPD_data[!(c_colnames_CAPD_data %in% c_colnames_CAPD_facility)]
+
+tb_CAPD_2023_join <- tb_CAPD_2023_raw %>% 
+  rename(unit_id = unit_id_4) %>% 
+  left_join(tb_CAPD_data_2023_raw %>% 
+              select(all_of(c("facility_id", c_colnames_CAPD_data_reduced))),
+            join_by(facility_id, unit_id))
+```
+
+```{r}
+#| label: join-CAPDs-colnames
+
+c_colnames_CAPD_join <- c(
+  "year", "sector_name" = "source_category", "state_abb" = "state", "county", 
+  "plant_name" = "facility_name", 
+  "plant_code" = "facility_id", "unit_id",  
+  "generator_id" = "associated_generators_nameplate_capacity_mwe",
+  "prime_mover" = "unit_type",
+  "primary_fuel_type", "secondary_fuel_type",
+  "heat_input_mmbtu_y" = "heat_input_mmbtu",
+  "max_heat_input_mmbtu_h" = "max_hourly_hi_rate_mmbtu_hr",
+  "nameplate_capacity_mw" = "nameplate_capacity_mwe", 
+  "operating_time_count", "sum_of_the_operating_time", "gross_load_mwh", 
+  "so2_phase", "nox_phase", 
+  "so2_controls", "nox_controls", "pm_controls", "hg_controls", 
+  "commercial_operation_date", "operating_status", 
+  "steam_load_1000_lb", "so2_mass_short_tons", "so2_rate_lbs_mmbtu", 
+  "co2_mass_short_tons", "co2_rate_short_tons_mmbtu", "nox_mass_short_tons",
+  "nox_rate_lbs_mmbtu",  
+  "associated_stacks", "program_code", "primary_rep_info",
+  "epa_region", "nerc_region", "county_code", "fips_code", "owner_operator", 
+  "latitude", "longitude"
+)
+```
+
+```{r}
+#| label: tbl-CAPD
+
+tb_CAPD_2023 <- tb_CAPD_2023_join %>% 
+  select(all_of(c_colnames_CAPD_join)) %>% 
+  mutate(county = str_remove_all(county, " [Cc]ounty"),
+         commercial_operation_date = year(commercial_operation_date),
+         prime_mover = str_replace(prime_mover, " \\(.+\\)", ""),
+         prime_mover = as.factor(str_to_lower(prime_mover)),
+         nox_controls = str_to_lower(replace_na(nox_controls, "none reported"))
+         ) %>% 
+  mutate(has_SCR_CAPD = 
+           str_detect(nox_controls, "selective") & 
+           str_detect(prime_mover, "turbine|combined"),
+         .after = prime_mover
+         ) %>%
+  mutate(capacity_factor = 
+           heat_input_mmbtu_y / (max_heat_input_mmbtu_h * 24 * 365),
+         capacity_factor_percent = round(capacity_factor * 100, 1),
+         .after = max_heat_input_mmbtu_h
+         ) %>% 
+  left_join(tb_states, join_by(state_abb)) %>%
+  select(-state_abb) %>%
+  relocate(state, county)
+```
+
+```{r}
+#| label: wrangle-CAPD-SCR
+
+c_filter_CAPD <- c(
+  year_start = 2019L,
+  year_end = 2023L,
+  prime_mover = "(turbine)|(combined)"
+)
+
+tb_CAPD_filtered <- tb_CAPD_2023 %>% 
+  filter(str_detect(prime_mover, c_filter_CAPD[["prime_mover"]])) %>%
+  filter(between(commercial_operation_date,
+                 as.double(c_filter_CAPD[["year_start"]]),
+                 as.double(c_filter_CAPD[["year_end"]])
+                 )
+         )
+```
+
+```{r}
+#| label: wrangle-CAPD-SCR-old
+
+# tb_CAPD_SCR <- tb_CAPD_2023_raw %>% 
+#   rename(state_abb = state,
+#          unit_id = unit_id_4,
+#          facility_unit_id = unit_id_31,
+#          id_capacity = associated_generators_nameplate_capacity_mwe
+#          ) %>% 
+#   mutate(county = str_remove_all(county, " [Cc]ounty"),
+#          date = year(commercial_operation_date),
+#          unit_type = str_replace(unit_type, " \\(.+\\)", ""),
+#          unit_type = as.factor(str_to_lower(unit_type)),
+#          nox_controls = str_to_lower(replace_na(nox_controls, "none reported")),
+#          has_SCR_CAPD = 
+#            str_detect(nox_controls, "selective") & 
+#            str_detect(unit_type, "turbine|combined")
+#          ) %>% 
+#   filter(str_detect(unit_type, c_filter_CAPD[["unit_type"]])) %>%
+#   filter(between(date,
+#                  as.double(c_filter_CAPD[["year_start"]]),
+#                  as.double(c_filter_CAPD[["year_end"]])
+#                  )
+#          ) %>%
+#   left_join(tb_states, join_by(state_abb)) %>%
+#   select(-state_abb) %>%
+#   relocate(state, county) %>%
+#   select(state, county, plant_name = facility_name, plant_code = facility_id,
+#          unit_type, unit_id, id_capacity, date,
+#          capacity_combined_mwe = nameplate_capacity_mwe,
+#          nox_controls, has_SCR_CAPD
+#          )
+```
+
+```{r}
+#| label: wrangle-CAPD-capacity
+
+tb_CAPD_long <- tb_CAPD_filtered %>% 
+  select(state, county, plant_name, plant_code,
+         prime_mover, unit_id, generator_id, commercial_operation_date,
+         capacity_combined_mw = nameplate_capacity_mw,
+         nox_controls, has_SCR_CAPD
+         ) %>% 
+  separate_longer_delim(generator_id, delim = ", ") %>% 
+  separate_wider_regex(generator_id, 
+                       c(generator_id = ".+", " \\(", 
+                         nameplate_capacity_mw = ".+", "\\).*"
+                         )
+                       ) %>% 
+  relocate(capacity_combined_mw, .after = nameplate_capacity_mw) %>% 
+  mutate(prime_mover = as.factor(prime_mover),
+         nameplate_capacity_mw = as.double(nameplate_capacity_mw),
+         capacity_combined_mw = as.double(capacity_combined_mw),
+         )
+```
+
+```{r}
+#| label: CAPD-reduced
+
+tb_CAPD_reduced <- tb_CAPD_long %>%
+  distinct(state, county, plant_code, plant_name, generator_id) %>% 
+  group_by(plant_code) %>% 
+  mutate(unit = seq(n())) %>% 
+  ungroup() %>% 
+  select(state, county, plant_code, plant_name, unit) %>% 
+  mutate(CAPD = T)
+```
+
+## Join and deduplication
+
+Data were joined by plant code and unit code, then manually assessed for duplicates by inspecting which counties had multiple entries (it's rare that a county has >1 CT-containing facility). 
+
+Like the raw CAPD data, NESHAP CT/CA's seem to be combined already. Unlike CAPD, NESHAP is harder to disambiguate. As such, the NESHAP CT/CA's were left as-is.
+
+```{r}
+#| label: join
+
+tb_join <- 
+  reduce(list(tb_EIA_reduced, tb_EIA_proposed_reduced, 
+              tb_NEEDS_reduced, tb_CAPD_reduced
+              ),
+        \(x, y)  full_join(x, y, join_by(plant_code, unit)) 
+         ) %>%
+  full_join(tb_NESHAP_reduced, join_by(plant_code, unit)) %>% 
+  mutate(across(c(EIA, EIA_proposed, NEEDS, CAPD, NESHAP), 
+                \(col) replace_na(col, F)
+                )
+         ) %>% 
+  unite("plant_name", starts_with("plant_name"), na.rm = T) %>% 
+  unite("state", starts_with("state"), na.rm = T) %>% 
+  unite("county", starts_with("county"), na.rm = T) %>% 
+  mutate(across(c(plant_name, state, county), 
+                \(col) str_extract(col, "^[^_]+")
+                )
+         ) %>% 
+  arrange(plant_code, unit)
+
+# tb_join %>% write_csv("EIA_NEEDS_NESHAP_CAPD.csv")
+```
+
+Did not check for spelling errors in state and county.
+
+```{r}
+#| label: dup-check
+
+# plants in the same county that come from different lists are likely to be duplicates.
+tb_dup_check <- tb_join %>%
+  group_by(state, county) %>%
+  filter(n_distinct(plant_code) > 1) %>%
+  filter(!if_any(EIA:NESHAP, \(col) all(col))) %>%
+  arrange(state, county, plant_code)
+
+# manually checked all potential duplicates from tb_dup_check
+tb_dup_check_confirmed <- tribble(
+  ~plant_code, ~plant_name,
+  315, "AES Alamitos",
+  62115, "AES Alamitos Energy Center",
+  335, "AES Huntington Beach",
+  62116, "AES Huntington Beach Energy Project",
+  613, "Lauderdale",
+  65978, "Dania Beach 7",
+  NA_integer_, "Dania Beach (Part of Lauderdale Plant)",
+  641, "Gulf Clean Energy Center",
+  NA_integer_, "Gulf Clean Energy Center (formerly Plant Crist)",
+  645, "Big Bend",
+  NA_integer_, "Big Bend Station",
+  64854, "Primient",
+  NA_integer_, "Primary Products Ingredients Americas",
+  50431, "University of Michigan",
+  NA_integer_, "University of Michigan Central Power Plant",
+  55641, "Riverside Energy Center",
+  64020, "West Riverside Energy Center"
+)
+```
+
+```{r}
+#| label: tbl-duplicates
+
+# Might not work if a county has 2 different groups of duplicates. Luckily, this
+# is not the case with the current data set.
+tb_duplicates <- tb_dup_check_confirmed %>% 
+  inner_join(tb_dup_check, join_by(plant_code, plant_name)) %>%
+  pivot_longer(EIA:NESHAP, names_to = "list", values_to = "in_list") %>%
+  filter(in_list) %>%
+  pivot_wider(id_cols = c(state, county, unit),
+              names_from = list,
+              values_from = c(plant_code, plant_name)
+              )
+
+tb_duplicates
+
+# tb_duplicates %>% write_csv("duplicates.csv")
+```
+
+In addition to duplicates, Christian noted that the NET Power La Porte Station facility is operational and should be moved from EIA - Proposed to EIA - Operable. In this vein, other similarly erroneously listed facilities were investigated by comparing the EIA - Proposed list to the other lists. In addition to NET, 3 other proposed facilities were found in either CAPD or NEEDS. After an internet search, these other 3 facilities were confirmed to be not fully operational. As such, they were not moved to EIA - Operable.
+
+```{r}
+#| label: fix-operable-proposed-old
+
+# column names that match between operable and proposed 
+ls_col_select <- (colnames(tb_EIA_proposed_filtered) %in% 
+                    colnames(tb_EIA)
+                  ) %>% 
+  colnames(tb_EIA_proposed_filtered)[.]
+
+# manually checked facilities that were actually operable by end-of-year 2023
+c_operable_proposed <- c(
+  "NET Power La Porte Station"
+)
+
+tb_EIA_fixed <- tb_EIA_proposed_filtered %>% 
+  filter(str_detect(plant_name, str_c(c_operable_proposed, collapse = "|"))) %>% 
+  select(all_of(ls_col_select)) %>% 
+  mutate(was_proposed = T, .before = 1) %>% 
+  bind_rows(tb_EIA) %>% 
+  mutate(was_proposed = replace_na(was_proposed, F)
+         ) %>% 
+  relocate(was_proposed) %>% 
+  arrange(plant_code, unit_code, prime_mover, generator_id)
+
+# filter out operable plants from EIA Proposed list
+tb_EIA_proposed_filter_fixed <- tb_EIA_proposed_filtered %>% 
+  filter(!str_detect(plant_name, str_c(c_operable_proposed, collapse = "|")))
+```
+
+## Master Facility List
+
+```{r}
+#| label: column-names-prejoin
+
+c_col_name_EIA <- c(
+  "was_proposed", "state", "county", "utility_id", "utility_name", 
+  "plant_code", "plant_name", "generator_id", "technology", "prime_mover", 
+  "unit_code", "ownership", "duct_burners", 
+  "can_bypass_heat_recovery_steam_generator", "rto_iso_lmp_node_designation",
+  "rto_iso_location_designation_for_reporting_wholesale_sales_data_to_ferc", 
+  "nameplate_capacity_mw", "nameplate_power_factor", "summer_capacity_mw", 
+  "winter_capacity_mw", "status",
+  "associated_with_combined_heat_and_power_system", "sector_name", "sector",
+  "energy_source_1", "energy_source_2", "energy_source_3", "energy_source_4", 
+  "energy_source_5", "energy_source_6", "turbines_or_hydrokinetic_buoys",
+  "fluidized_bed_technology", "pulverized_coal_technology", "stoker_technology",
+  "other_combustion_technology", "subcritical_technology", 
+  "supercritical_technology", "ultrasupercritical_technology", 
+  "solid_fuel_gasification_system", "carbon_capture_technology", 
+  "multiple_fuels", "switch_between_oil_and_natural_gas", "cofire_fuels",
+  "has_SCR_EIA", "minimum_load_mw", "uprate_or_derate_completed_during_year", 
+  "month_uprate_or_derate_completed", "year_uprate_or_derate_completed", 
+  "synchronized_to_transmission_grid", "operating_month", "operating_year", 
+  "planned_retirement_month", "planned_retirement_year", "topping_or_bottoming",
+  "startup_source_1", "startup_source_2", "startup_source_3", "startup_source_4",
+  "time_from_cold_shutdown_to_full_load", 
+  "planned_net_summer_capacity_uprate_mw", 
+  "planned_net_winter_capacity_uprate_mw", "planned_uprate_month", 
+  "planned_uprate_year", "planned_net_summer_capacity_derate_mw", 
+  "planned_net_winter_capacity_derate_mw", "planned_derate_month", 
+  "planned_derate_year", "planned_new_prime_mover", "planned_energy_source_1", 
+  "planned_new_nameplate_capacity_mw", "planned_repower_month", 
+  "planned_repower_year", "other_planned_modifications",
+  "other_modifications_month", "other_modifications_year", 
+  "latitude", "longitude"
+)
+
+c_col_name_CAPD <- c(
+  "state", "county", "year", "sector_name", "plant_name", "plant_code", 
+  "unit_id", "generator_id", "prime_mover", "has_SCR_CAPD", "primary_fuel_type", 
+  "secondary_fuel_type", "heat_input_mmbtu_y", "max_heat_input_mmbtu_h", 
+  "capacity_factor", "capacity_factor_percent", "nameplate_capacity_mw", 
+  "operating_time_count", "sum_of_the_operating_time", "gross_load_mwh", 
+  "so2_phase", "nox_phase", "so2_controls", "nox_controls", "pm_controls", 
+  "hg_controls", "commercial_operation_date", "operating_status", 
+  "steam_load_1000_lb", "so2_mass_short_tons", "so2_rate_lbs_mmbtu", 
+  "co2_mass_short_tons", "co2_rate_short_tons_mmbtu", "nox_mass_short_tons", 
+  "nox_rate_lbs_mmbtu", "associated_stacks", "program_code", "primary_rep_info",
+  "epa_region", "nerc_region", "county_code", "fips_code", "owner_operator", 
+  "latitude", "longitude"
+)
+
+c_col_name_NEEDS <- c(
+  "plant_name", "uniqueid_final", "plant_code", "generator_id", "capd_id2",
+  "camd_database_unitid", "planttype", "state", "county", "fips5", 
+  "capacity_mw", "heat_rate_btu_kwh", "on_line_year", "cogen", "modeled_fuels",
+  "nox_comb_control", "nox_post_comb_control", "scr_online_year",
+  "mode_1_nox_rate_lbs_mmbtu", "mode_2_nox_rate_lbs_mmbtu", 
+  "mode_3_nox_rate_lbs_mmbtu", "mode_4_nox_rate_lbs_mmbtu", "owner_name",
+  "owner_percent", "holding_company", "holding_company_percent", 
+  "regulatory_status", "has_SCR_NEEDS"
+)
+
+c_col_name_NESHAP <- c(
+  "state", "county", "facility_record_id", "emission_unit_id", "plant_code",
+  "oris_facility_with_egus_from_erich_7_10_24", "oris_unit_id", 
+  "emission_unit_description", "process_id", "process_desc", "emergency_use",
+  "plant_type_function", "scc", "scc_desc", "fuel_type", "dual_fuel", 
+  "turbine_make", "turbine_model", "turbine_cycle", "is_turbine_lean_premix",
+  "permit_emission_controls", "does_turbine_have_oxidation_catalyst",
+  "permit_design_capacity", "permit_design_capacity_uom", "capacity_in_mw",
+  "nei_design_capacity", "nei_design_capacity_uom", "permit_construction_date",
+  "turbine_count", "new_existing_per_yyyy", "comments", "parent_company", 
+  "owner_name", "plant_name", "facility_id", "region", "location_address", 
+  "city", "zipcode", "x_coordinate", "y_coordinate", "has_SCR_NESHAP"
+)
+```
+
+```{r}
+#| label: column-names-reduced
+
+c_col_name_EIA_reduced <- c(
+  "sector_name",
+  "is_CHP" = "associated_with_combined_heat_and_power_system", 
+  "state", "county", "plant_code", "plant_name", 
+  "unit_id" = "unit_code", "generator_id", "prime_mover",
+  "nameplate_capacity_mw",  
+  "energy_source_1", "energy_source_2", "energy_source_3", 
+  "energy_source_4", "energy_source_5", "energy_source_6", 
+  "has_SCR_EIA", "operating_year",
+  "is_multifuel" = "multiple_fuels", 
+  "is_fuel_switching" = "switch_between_oil_and_natural_gas", 
+  "is_cofire" = "cofire_fuels",
+  "x_coordinate" = "longitude", "y_coordinate" = "latitude" 
+)
+
+c_col_name_CAPD_reduced <- c(
+  "state", "county", "plant_name", "plant_code", 
+  "prime_mover", "unit_id", "generator_id", 
+  "operating_year" = "commercial_operation_date", 
+  "nameplate_capacity_mw", "capacity_factor_percent",
+  "has_SCR_CAPD",
+  "x_coordinate" = "longitude", "y_coordinate" = "latitude" 
+)
+
+c_col_name_NEEDS_reduced <- c(
+  "is_CHP" = "cogen", "state", "county", 
+  "plant_name", "plant_code", "generator_id", 
+  "prime_mover" = "planttype", "nameplate_capacity_mw" = "capacity_mw", 
+  "fuel" = "modeled_fuels", 
+  "has_SCR_NEEDS"
+)
+
+# Permit construction date column is irregular. Excluding for now.
+c_col_name_NESHAP_reduced <- c(
+  "sector_name" = "plant_type_function", "state", "county", 
+  "plant_code", "plant_name", "unit_id" = "oris_unit_id", 
+  "prime_mover" = "turbine_cycle", 
+  "nameplate_capacity_mw" = "capacity_in_mw", "fuel" = "fuel_type", 
+  "has_SCR_NESHAP", "permit_construction_date",
+  "is_multifuel" = "dual_fuel", 
+  "turbine_make", "turbine_model", "emission_unit_description",
+  "x_coordinate", "y_coordinate"
+)
+```
+
+```{r}
+#| label: prejoin-EIA-NEEDS-filters
+
+c_filter_operable_fixed <- c(
+  year_start = 2019L,
+  year_end = 2023L,
+  prime_mover = "GT|CT|CA|CS"
+)
+
+tb_EIA_prejoin <- tb_EIA_fixed %>%
+  filter(str_detect(prime_mover, c_filter_operable_fixed[["prime_mover"]])) %>% 
+  select(all_of(c_col_name_EIA_reduced)) 
+
+tb_NEEDS_prejoin <- tb_NEEDS %>%
+  filter(str_detect(planttype, c_filter_NEEDS[["prime_mover"]])) %>% 
+  select(all_of(c_col_name_NEEDS_reduced))
+```
+
+```{r}
+#| label: join-EIA-NEEDS
+
+# Manually checked NEEDS vs EIA. Plants only in NEEDS are misclassified. Using
+# left_join to remove these.
+tb_EIA_NEEDS_join <- tb_EIA_prejoin %>% 
+  left_join(tb_NEEDS_prejoin %>% 
+              select("plant_code", "generator_id", "has_SCR_NEEDS"),
+            join_by(plant_code, generator_id)
+            ) %>% 
+  relocate(contains("SCR"), .after = nameplate_capacity_mw) %>% 
+  arrange(plant_code, nameplate_capacity_mw)
+```
+
+```{r}
+#| label: EIA-NEEDS-CT-CA-wrangle
+
+tb_EIA_NEEDS_CT_CA <- tb_EIA_NEEDS_join %>% 
+filter(str_detect(prime_mover, "CT|CA"))
+
+tb_EIA_CT_CA_wider <- tb_EIA_NEEDS_CT_CA %>% 
+  filter(prime_mover == "CA") %>% 
+  group_by(plant_code, unit_id) %>% 
+  summarize(capacity_CA_mw = sum(nameplate_capacity_mw)) %>% 
+  right_join(tb_EIA_NEEDS_CT_CA %>% filter(prime_mover == "CT"),
+             join_by(plant_code, unit_id),
+             relationship = "many-to-many"
+             ) %>% 
+  rename(capacity_CT_mw = nameplate_capacity_mw) %>% 
+  relocate(capacity_CA_mw, .after = capacity_CT_mw) %>% 
+  group_by(plant_code, unit_id) %>% 
+  mutate(prime_mover = "CT/CA",
+         CT_factor = round(capacity_CT_mw / sum(capacity_CT_mw), 2),
+         nameplate_capacity_mw = capacity_CT_mw + CT_factor * capacity_CA_mw
+         ) %>% 
+  relocate(unit_id, .before = generator_id) %>% 
+  relocate(CT_factor, nameplate_capacity_mw, .after = capacity_CA_mw)
+
+tb_EIA_wrangle <- tb_EIA_NEEDS_join %>% 
+  filter(!str_detect(prime_mover, "CT|CA")) %>% 
+  bind_rows(tb_EIA_CT_CA_wider) %>% 
+  relocate(capacity_CT_mw, capacity_CA_mw, CT_factor, 
+           .after = nameplate_capacity_mw) %>% 
+  filter(between(operating_year,
+                 as.double(c_filter_operable_fixed[["year_start"]]), 
+                 as.double(c_filter_operable_fixed[["year_end"]])
+                 )
+         ) %>% 
+  arrange(plant_code, nameplate_capacity_mw) %>% 
+  group_by(plant_code) %>% 
+  mutate(temp_gen_id = seq(n()), .before = unit_id) %>% 
+  ungroup() %>% 
+  arrange(plant_code, unit_id, prime_mover, generator_id) %>% 
+  select(-c(capacity_CT_mw, capacity_CA_mw, CT_factor))
+```
+
+The unit_id of EIA/NEEDS and CAPD are different. In EIA/NEEDS, the unit_id incorporates all CT and CA generators that are connected. In CAPD, the unit_id breaks out each CT, then groups each CT with whatever CA(s) that the individual CT is connected to. As such, the unit_ids of the EIA/NEEDS and CAPD lists, oftentimes, do not match. Consequently, a relational-based temp_unit_id is used to join the lists.
+
+```{r}
+#| label: join-CAPD
+
+tb_CAPD_wrangle <- tb_duplicates %>%
+  distinct(plant_code_CAPD, plant_code_EIA) %>% 
+  filter(!is.na(plant_code_EIA)) %>% 
+  right_join(tb_CAPD_filtered, join_by(plant_code_CAPD == plant_code),
+             relationship = "many-to-many"
+             ) %>% 
+  mutate(plant_code = 
+           case_when(
+             is.na(plant_code_EIA) ~ plant_code_CAPD,
+             !is.na(plant_code_EIA) ~ plant_code_EIA,
+           )) %>% 
+  select(all_of(c_col_name_CAPD_reduced)) %>% 
+  arrange(plant_code, nameplate_capacity_mw) %>% 
+  group_by(plant_code) %>% 
+  mutate(temp_gen_id = seq(n()), .before = unit_id)
+  
+tb_CAPD_join_check <- tb_CAPD_wrangle %>%
+  full_join(tb_EIA_wrangle,
+            join_by(plant_code, temp_gen_id),
+            suffix = c("_CAPD", "_EIA")
+            ) %>% 
+  relocate(contains("EIA")) %>% 
+  unite("plant_name", starts_with("plant_name"), na.rm = T) %>% 
+  unite("state", starts_with("state"), na.rm = T) %>% 
+  unite("county", starts_with("county"), na.rm = T) %>% 
+  mutate(across(c(plant_name, state, county), 
+                \(col) str_extract(col, "^[^_]+")
+                )
+         ) %>% 
+  relocate(plant_code, plant_name, contains("unit_id"), contains("generator_id"),
+           contains("nameplate")) %>% 
+  arrange(plant_code, unit_id_EIA, prime_mover_EIA, generator_id_EIA)
+
+tb_CAPD_join <- tb_CAPD_join_check %>% 
+  relocate(generator_id_CAPD, .before = generator_id_EIA) %>% 
+  unite("unit_id", starts_with("unit_id"), na.rm = T) %>% 
+  unite("generator_id", starts_with("generator_id"), na.rm = T) %>% 
+  unite("prime_mover", starts_with("prime_mover"), na.rm = T) %>% 
+  unite("x_coordinate", starts_with("x_coordinate"), na.rm = T) %>% 
+  unite("y_coordinate", starts_with("y_coordinate"), na.rm = T) %>% 
+  mutate(across(c(unit_id, generator_id, prime_mover,
+                  x_coordinate, y_coordinate), 
+                \(col) str_extract(col, "^[^_]+")
+                )
+         ) %>% 
+  relocate("sector_name", "is_CHP", "state", "county", "plant_name", 
+           "plant_code", "unit_id", "generator_id", 
+           "prime_mover", starts_with("nameplate_capacity_mw"),
+           capacity_factor_percent, starts_with("has_SCR"), 
+           starts_with("energy_source"),
+           "is_multifuel", "is_fuel_switching", "is_cofire", 
+           contains("operating_year"), contains("coordinate")
+           ) %>% 
+  arrange(plant_code, unit_id, prime_mover, generator_id)
+```
+
+```{r}
+#| label: join_NESHAP
+
+tb_NESHAP_wrangle <- tb_duplicates %>%
+  distinct(plant_code_EIA, plant_code_NESHAP,
+           plant_name_EIA, plant_name_NESHAP
+           ) %>% 
+  right_join(tb_NESHAP, join_by(plant_code_NESHAP == plant_code,
+                                plant_name_NESHAP == plant_name),
+             relationship = "many-to-many"
+             ) %>% 
+  mutate(plant_code = 
+           case_when(
+             is.na(plant_code_EIA) ~ plant_code_NESHAP,
+             !is.na(plant_code_EIA) ~ plant_code_EIA,
+           ),
+         plant_name = 
+           case_when(
+             is.na(plant_name_EIA) ~ plant_name_NESHAP,
+             !is.na(plant_name_EIA) ~ plant_name_EIA,
+           )) %>% 
+  select(all_of(c_col_name_NESHAP_reduced)) %>% 
+  arrange(plant_code, plant_name, nameplate_capacity_mw) %>% 
+  group_by(plant_name) %>% 
+  mutate(temp_gen_id = seq(n()), .before = unit_id) %>% 
+  ungroup() %>% 
+  mutate(unit_id = case_when(str_detect(unit_id, "\\s") ~ NA_character_,
+                             T ~ unit_id)
+         )
+
+tb_NESHAP_join_check <- tb_NESHAP_wrangle %>%
+  full_join(tb_CAPD_join,
+            join_by(plant_code, temp_gen_id),
+            suffix = c("_NESHAP", "_EIA")
+            ) %>% 
+  relocate(contains("EIA"), contains("CAPD")) %>% 
+  unite("plant_code", starts_with("plant_code"), na.rm = T) %>% 
+  unite("plant_name", starts_with("plant_name"), na.rm = T) %>% 
+  unite("state", starts_with("state"), na.rm = T) %>% 
+  unite("county", starts_with("county"), na.rm = T) %>% 
+  mutate(across(c(plant_name, plant_code, state, county), 
+                \(col) str_extract(col, "^[^_]+")
+                )
+         ) %>% 
+  mutate(plant_code = as.integer(plant_code)) %>% 
+  relocate(plant_code, plant_name, contains("unit_id"), contains("generator_id"),
+           contains("nameplate"))
+```
+
+```{r}
+#| label: tb-master
+
+tb_master <- tb_NESHAP_join_check %>% 
+  rename(nameplate_capacity_mw_NESHAP = nameplate_capacity_mw) %>% 
+  unite("unit_id", starts_with("unit_id"), na.rm = T) %>% 
+  unite("sector_name", starts_with("sector_name"), na.rm = T) %>% 
+  unite("prime_mover", starts_with("prime_mover"), na.rm = T) %>%
+  unite("x_coordinate", starts_with("x_coordinate"), na.rm = T) %>% 
+  unite("y_coordinate", starts_with("y_coordinate"), na.rm = T) %>% 
+  mutate(across(c(unit_id, sector_name, prime_mover, 
+                  x_coordinate, y_coordinate), 
+                \(col) str_extract(col, "^[^_]+")
+                )
+         ) %>% 
+  relocate(contains("EIA"), contains("NEEDS"), 
+           contains("CAPD"), contains("NESHAP")
+           ) %>% 
+  relocate("sector_name", "is_CHP", "state", "county", "plant_name", 
+           "plant_code", "unit_id", "generator_id", 
+           "prime_mover", starts_with("nameplate_capacity_mw"),
+           capacity_factor_percent,
+           starts_with("has_SCR"), starts_with("energy_source"),
+           starts_with("is_multifuel"), "is_fuel_switching", "is_cofire", 
+           contains("operating_year"), permit_construction_date,
+           turbine_make, turbine_model, emission_unit_description,
+           contains("coordinate")
+           ) %>% 
+  mutate(across(starts_with("is_"), 
+                \(col) case_when(str_detect(col, "N|No") ~ F,
+                                 str_detect(col, "Y|Yes") ~ T
+                                 )
+                ),
+         across(c(sector_name, prime_mover, turbine_make), as.factor),
+         across(starts_with("nameplate_capacity"), 
+                \(col) round(as.double(col), 2)),
+         across(starts_with("energy_source"), as.factor),
+         across(contains("coordinate"), \(col) round(as.double(col), 6))
+         ) %>% 
+  select(-temp_gen_id, -fuel) %>% 
+  arrange(plant_code, unit_id, prime_mover, generator_id)
+
+```
+
+Christian reviewed list and requested the following facilities be removed because they were not operable in 2023.
+
+```{r}
+#| label: tbl-manual-remove
+
+tb_master_remove <- tribble(
+  ~plant_code, ~plant_name,
+  469, "Cherokee Station",
+  NA_integer_, "Naval Station Norfolk (NAVSTA Norfolk)"
+)
+  
+tb_master_fixed <- tb_master %>% 
+  rows_delete(tb_master_remove, by = c("plant_code", "plant_name"))
+
+# write_csv(tb_master_fixed, "output/master_inventory_list.csv")
+```
+
+
+```{r}
+#| label: tbl-EIA-CAPD-diff
+
+tb_master_dif <- tb_master_fixed %>% 
+  select(plant_code, plant_name, generator_id, prime_mover,
+         contains("nameplate_capacity"),
+         capacity_factor_percent, 
+         contains("has_SCR"),
+         contains("operating_year"), permit_construction_date
+         ) %>% 
+  rowwise() %>% 
+  mutate(mismatch_SCR = 
+           !all(c_across(contains("has_SCR")), na.rm = T) &
+           any(c_across(contains("has_SCR")), na.rm = T),
+         mismatch_date = 
+           {n_distinct(c_across(c(contains("operating_year"), 
+                                permit_construction_date
+                                )), 
+                       na.rm = T) > 1
+             } &
+           {sum(is.na((c_across(c(contains("operating_year"), 
+                                permit_construction_date
+                                ))
+                       ) 
+                      )
+                ) < 2
+                },
+         .before = 1) %>% 
+  ungroup() %>% 
+  filter(mismatch_SCR | mismatch_date) %>% 
+  arrange(desc(mismatch_SCR), desc(mismatch_date), nameplate_capacity_mw_EIA)
+
+# tb_master_dif %>% 
+#   write_csv("output/master_EIA_CAPD_dif.csv")
+```

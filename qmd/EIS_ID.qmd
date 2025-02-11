@@ -1,0 +1,438 @@
+---
+title: "Joining EIS IDs for Contractor"
+author: "Nick Sayresmith"
+date: last-modified
+format: 
+  html: 
+    toc: true
+    toc-location: right
+    number-sections: true
+    code-fold: true
+    code-tools: true
+    fig-width: 8
+    fig-asp: 0.618
+    out-width: "70%"
+    fig-align: center
+    fig-format: png
+    embed-resources: true
+execute:
+  echo: true
+  warning: false
+editor_options: 
+  chunk_output_type: console
+---
+
+Analysis is to help support KKKKa. Heather Simon contacted ESG (12/20/24) to help with a contractor query regarding the master inventory list:
+
+*It appears that there isn’t enough information in the workbook to identify a majority of the units to be tagged in the 2017 inventories. We’re able to match the "plant code" and "unit id" columns from the workbook to the "oris_facility_code" and "oris_boiler_id" columns in the FF10 inventories in SMOKE. However those two ORIS codes are filled in only for EGU CEMs, but not for EGU non-CEMS and non-EGU sources. In the absence of these IDs in the FF10s, this becomes a manual exercise of searching for facilities based on the county and plant name. Identifying specific units to be tagged within those facilities is even more challenging.*
+
+After obtaining EIS access, I found that there is no trivial way in which to join EIS IDs to the master inventory list. As such, I tried adapting code to join the EIS IDs to the master inventory list by state, county, and nameplate capacity. This code was adapted from KKKKa.qmd which was originally used to create the master inventory list by joining EIA, CAMPD, NEEDS, and NESHAP lists by state, county, and nameplate capacity. Unfortunately, my attempt to join the EIS and master inventories by state, county, and nameplate capacity failed. 
+
+Next, I tried joining facilities by latitude and longitude. Unfortunately, almost 50% of facilities had no matching EIS ID. And even within those matching facilities, I can think of no way to unambiguously assign unit EIS IDs, which I believe is necessary for modeling based on contractor comments and the [SMOKE User Manual](https://www.cmascenter.org/smoke/documentation/4.5/html/index.html). Doubting the usefulness of the final list, I'm stopping the analysis short for now.
+
+## Libraries
+
+```{r}
+#| label: libraries
+
+library(tidyverse)
+library(readxl)
+library(magrittr)
+library(here)
+library(knitr)
+```
+
+## Summary of EIS Report
+
+The Emissions Inventory System (EIS) is where state, local, and tribal (STL) air agencies report to the EPA their inventories. STL agencies build their inventories through reports by industry owners/operators per the Air Emissions Reporting Requirements ([AERR](https://www.federalregister.gov/documents/2023/08/09/2023-16158/revisions-to-the-air-emissions-reporting-requirements#h-11)). The EIS is used to construct the National Emissions Inventory (NEI). However, the NEI takes several years to publish (~3 years). As such, one of the reasons that the EIS Gateway was built is so that stakeholders can access STL agency data more regularly. 
+
+For this analysis, I requested a report of "emissions summary by emissions unit" from the [EIS Gateway's Request Reports page](https://eis.epa.gov/eis-system-web/report/list.html) (requires an account).  
+
+Report criteria were left as default except where input was required. There were also some additional column selections beyond default (see EIS report xlsx). The pollutant chosen (NOX) doesn't really matter since I only need EIS ID, state, county, and unit capacity in order to do the join.
+
+| Criteria | Input |
+|----------|-------|
+| Data Set | 2023EPA_EGU |
+| Pollutants | NOX |
+| Geography | All geographic regions included |
+| Facility Source Types | All Facility Source Types Included |
+| SCC | All SCC Included |
+| Sector | All Sectors Included |
+| Reporting Periods | Annual |
+| Tagged Data Handling | Not Tagged and Tagged included |
+| Emissions Operating Type | Routine |
+| Columns Selected | *see csv file* |
+
+More information on facility inventory and point emissions can be found in the [EIS Manual](https://eis.epa.gov/userguide/Gateway/ViewAddEdit/FacilityInventoryPointEmissions.html).
+
+## Read
+
+```{r}
+#| label: FUNCTION-my-name-repair
+
+my_name_repair <- function(col_name) {
+  
+  c_escape_underscore <- c(".", "-", "&") %>% 
+    str_c("\\", ., collapse = "|")
+  
+  c_nonescape_underscore <- c("\r\n") %>% 
+    str_c(., collapse = "|")
+  
+  c_replace_underscore <- str_c(c_escape_underscore, "|",
+                                c_nonescape_underscore
+                                )
+  
+  c_escape_remove <- c("(", ")", "?") %>% 
+    str_c("\\", ., collapse = "|")
+  
+  col_name %>% 
+    str_replace_all(c_replace_underscore, "_") %>% 
+    str_replace_all("\\/", "_per_") %>% 
+    str_replace_all(c_escape_remove, "") %>% 
+    str_replace_all("__+", "_") %>% 
+    str_replace_all("_$", "") %>% 
+    str_to_lower()
+}
+```
+
+Many of the units don't list their operational year. Going to antijoin 2018EGU and 2023EGU to get units that were built 2019-2024.
+
+```{r}
+#| label: EIS-col-type
+
+ls_EIS_col_type <- tribble(
+  ~col_name, ~col_type,
+  "state", "character",
+  "fips_state_code", "numeric",
+  "tribal_name", "character",
+  "fips_code", "numeric",
+  "county", "character",
+  "eis_facility_id", "numeric",
+  "program_system_code", "character",
+  "agency_facility_id", "character",
+  "company_name", "character",
+  "site_name", "character",
+  "primary_naics_code", "numeric",
+  "facility_source_type", "character",
+  "site_latitude", "numeric",
+  "site_longitude", "numeric",
+  "facility_status", "character",
+  "facility_status_year", "numeric",  
+  "eis_unit_id", "numeric",
+  "agency_unit_id", "character",
+  "unit_type", "character",
+  "unit_description", "character",
+  "design_capacity", "numeric",  
+  "design_capacity_uom", "character",
+  "unit_status", "character",
+  "unit_status_year", "numeric",
+  "permit_status_start_year", "numeric",  
+  "permit_status_end_year", "numeric",
+  "reporting_period", "character",
+  "emissions_operating_type", "character",
+  "pollutant_code", "character",
+  "pollutant_desc", "character",
+  "total_emissions", "numeric",  
+  "emissions_uom", "character",
+  "data_set", "character"
+  ) %>% 
+  mutate(col_type = 
+           case_when(
+             col_type == "character" ~ "text",
+             T ~ col_type
+           )
+         )
+```
+
+```{r}
+#| label: read-EIS-2023
+#| cache: true
+
+path_EIS_2023 <- "input/eis_report_2023EGU"
+file_EIS_2023 <- here(path_EIS_2023, "emis_sum_unit_2023EGU.xlsx")
+
+ls_sheets_EIS_2023 <- excel_sheets(file_EIS_2023)
+
+tb_EIS_2023_raw <- read_excel(file_EIS_2023, "emis_sum_unit",
+                         col_type = ls_EIS_col_type$col_type,
+                         .name_repair = "universal"
+                         ) %>% 
+  rename_with(my_name_repair)
+
+# tb_EIS_2023_raw %>% 
+#   summarise_all(class) %>% 
+#   pivot_longer(everything(),
+#                names_to = "col_name", values_to = "col_type") %>% 
+#   print(n = nrow(.))
+```
+
+```{r}
+#| label: read-EIS-2018
+#| cache: true
+
+path_EIS_2018 <- "input/eis_report_2018EGU"
+file_EIS_2018 <- here(path_EIS_2018, "emis_sum_unit_EGU2018.xlsx")
+
+ls_sheets_EIS <- excel_sheets(file_EIS_2018)
+
+tb_EIS_2018_raw <- read_excel(file_EIS_2018, "emis_sum_unit_EGU2018",
+                         # col_type = ls_EIS_col_type$col_type,
+                         .name_repair = "universal"
+                         ) %>% 
+  rename_with(my_name_repair)
+```
+
+```{r}
+#| label: read-master-inventory
+#| cache: true
+
+path_master_inventory <- "input"
+file_master_inventory <- here(path_master_inventory,
+                             "Master_inventory_list_for_EIS_ID.xlsx"
+                             )
+
+ls_sheets_EIS <- excel_sheets(file_master_inventory)
+
+tb_master_raw <- read_excel(file_master_inventory, "master_inventory_list",
+                         .name_repair = "universal"
+                         ) %>% 
+  rename_with(my_name_repair)
+```
+
+## Wrangle
+
+I'm assuming that "unit status year" is the unit's first year of operation.
+
+```{r}
+#| label: col-names-EIS
+
+col_names_EIS <- c(
+  "sector_name" = "facility_source_type", "primary_naics_code", 
+  "state_abb" = "state", "county", 
+  "plant_code_eis" = "eis_facility_id",  
+  "plant_name" = "site_name", "company_name",
+  "unit_id_eis" = "eis_unit_id", "unit_id_agency" = "agency_unit_id", 
+  "prime_mover" = "unit_type", "unit_description", 
+  "nameplate_capacity_eis" = "design_capacity", 
+  "capacity_units" = "design_capacity_uom", 
+  "operating_year_eis" = "unit_status_year", "unit_status", 
+  "x_coordinate" = "site_longitude", "y_coordinate" = "site_latitude"
+  )
+
+col_discard_eis <- c(
+  "fips_state_code", "tribal_name", 
+  "fips_code", "program_system_code", "agency_facility_id", 
+  "facility_status", "facility_status_year", 
+  "permit_status_start_year", "permit_status_end_year", "reporting_period", 
+  "emissions_operating_type", "pollutant_code", "pollutant_desc", 
+  "total_emissions", "emissions_uom",
+  "data_set"
+)
+
+col_names_master <- c(
+  "sector_name", "is_chp", "state", "county", "plant_name", "plant_code", 
+  "unit_id", "generator_id", "prime_mover", "nameplate_capacity_mw_eia",
+  "nameplate_capacity_mw_capd", "nameplate_capacity_mw_neshap",
+  "capacity_factor_percent", "has_scr_eia", "has_scr_needs", "has_scr_capd",
+  "has_scr_neshap", "energy_source_1", "energy_source_2", "energy_source_3",
+  "energy_source_4", "energy_source_5", "energy_source_6", "is_multifuel_eia",
+  "is_multifuel_neshap", "is_fuel_switching", "is_cofire", "operating_year_eia",
+  "operating_year_capd", "permit_construction_date", "turbine_make", 
+  "turbine_model", "emission_unit_description", "x_coordinate", "y_coordinate"
+)
+```
+
+The EIS list is filtered to units which first operated between 2019 and 2023. It is then further filtered to turbines and combined cycle units. It looks like "turbine" may refer to either GT or CT. May cause issue with relational matching; need to double-check. Attributing the boiler capacity to the corresponding turbine shouldn't matter since the relationship between CTs should stay the same. However, not attributing the boiler could affect the relationship between CTs and non-CTs (i.e. CS and GT). 
+
+```{r}
+#| label: state-codes
+
+tb_states <- 
+  tibble(state = state.name,
+         state_abb = state.abb)
+```
+
+EGU2018 has some units with operating dates past 2018, so I filtered those out. Not sure if that means there are still some post-2018 units in the list. It's possible that some of the units with no listed operational year are post-2018. This challenges the assumption that an antijoin of EGU2018 and EGU2023 will result in a list of recent units (2019-2024).
+
+```{r}
+#| label: wrangle-EIS-2018
+
+c_filter_EIS_2018 <- c(
+  year_end = 2019L,
+  prime_mover = "CS|Turbine",
+  unit_status = "OP"
+)
+
+tb_EIS_2018_rename <- tb_EIS_2018_raw %>% 
+  select(all_of(col_names_EIS))
+
+tb_EIS_2018 <- tb_EIS_2018_rename %>%
+  mutate(prime_mover = 
+           case_when(
+             str_detect(prime_mover, "Combined Cycle") ~ "CS",
+             T ~ prime_mover
+           )
+         ) %>% 
+  filter(operating_year_eis < c_filter_EIS_2018[["year_end"]] |
+           is.na(operating_year_eis)
+         ) %>% 
+  filter(str_detect(prime_mover, c_filter_EIS_2018[["prime_mover"]])) %>% 
+  filter(unit_status == c_filter_EIS_2018[["unit_status"]]) %>% 
+  left_join(tb_states, join_by(state_abb)) %>% 
+  select(-state_abb) %>% 
+  relocate(state, .before = county)
+```
+
+```{r}
+#| label: wrangle-EIS-2023
+
+c_filter_EIS_2023 <- c(
+  year_start = 2019L,
+  year_end = 2023L,
+  prime_mover = "CS|Turbine",
+  unit_status = "OP"
+)
+
+tb_EIS_2023_rename <- tb_EIS_2023_raw %>% 
+  select(all_of(col_names_EIS))
+
+tb_EIS_2023 <- tb_EIS_2023_rename %>%
+  mutate(prime_mover = 
+           case_when(
+             str_detect(prime_mover, "Combined Cycle") ~ "CS",
+             T ~ prime_mover
+           )
+         ) %>% 
+  filter(str_detect(prime_mover, c_filter_EIS_2023[["prime_mover"]])) %>% 
+  filter(unit_status == c_filter_EIS_2023[["unit_status"]]) %>% 
+  left_join(tb_states, join_by(state_abb)) %>% 
+  select(-state_abb) %>% 
+  relocate(state, .before = county)
+```
+
+```{r}
+#| label: filter-EIS
+
+tb_EIS_filter <- tb_EIS_2023 %>% 
+  anti_join(tb_EIS_2018, join_by(unit_id_eis))
+```
+
+```{r}
+#| label: wrangle-master
+
+tb_master <- tb_master_raw %>% 
+  mutate(across(matches("is_|has_"), as.logical),
+         across(contains("capacity"), \(col) as.numeric(col) %>% round(2))
+         ) %>% 
+  arrange(state, county, plant_code, nameplate_capacity_mw_eia)
+```
+
+## Join
+
+Filter EIS down to units that have a matching state and county to master list.
+
+```{r}
+#| label: pre-join-eis-filter
+
+tb_EIS_filter_prejoin <- tb_EIS_filter %>%
+  semi_join(tb_master, join_by(state, county))
+
+tb_EIS_filter_ambiguous <- tb_EIS_filter_prejoin %>% 
+  group_by(state, county) %>% 
+  filter(n_distinct(plant_code_eis) > 1) %>% 
+  arrange(state, county, plant_code_eis)
+
+tb_master_ambiguous <- tb_master %>% 
+  group_by(state, county) %>% 
+  filter(n_distinct(plant_code) > 1) %>% 
+  arrange(state, county, plant_code)
+
+tb_EIS_filter_unit_summary <- tb_EIS_filter_prejoin %>%
+  group_by(state, county, plant_name, company_name) %>%
+  summarise(n_units = n())
+
+# tb_master
+```
+
+The antijoin of EGU2018 and EGU2023 got rid of some units that should be there. This means that EGU2018 has units that EIA, CAMPD, NEEDS, and NESHAP report being constructed 2019-2024. It might be better to maximize the number of units that get modeled and have a small amount of ambiguous unit assignment.
+
+```{r}
+#| label: pre-join
+
+tb_EIS_pre_join <- tb_EIS_2023 %>% 
+  semi_join(tb_master, join_by(state, county))
+
+tb_EIS_ambiguous <- tb_EIS_pre_join %>% 
+  group_by(state, county) %>% 
+  filter(n_distinct(plant_code_eis) > 1) %>% 
+  arrange(state, county, plant_code_eis)
+
+tb_EIS_ambiguous_summary <- tb_EIS_ambiguous %>% 
+  summarise(n_plants = n_distinct(plant_code_eis))
+
+tb_master_ambiguous <- tb_master %>% 
+  group_by(state, county) %>% 
+  filter(n_distinct(plant_code) > 1) %>% 
+  arrange(state, county, plant_code)
+
+tb_EIS_unit_summary <- tb_EIS_pre_join %>% 
+  group_by(state, county, plant_name, company_name) %>% 
+  summarise(n_units = n())
+```
+
+Using the whole EIS database without filtering by year gives too many units with ambiguous state/county assignments.
+
+Adapting the previous code is not working. Using state, county, and nameplate capacity gives too many ambiguous facility assignments. And even if the facility assignment isn't ambiguous, the unit assignment is. The previous code worked well enough because I could filter both lists to recently constructed units (2019 - 2023). I can't do that with the EIS list.
+
+New strategy is to use lat/long to match facilities ([ref](https://www.omnicalculator.com/other/latitude-longitude-distance)). Unambiguous unit assignment is impossible. 
+
+```{r}
+#| label: FUNCTION-get-distance
+
+get_distance <- function(lat1, long1, lat2, long2) {
+  
+  radius <- 6371 * 0.6214 #mi
+  lat1 <- lat1 * pi/180
+  long1 <- long1 * pi/180
+  lat2 <- lat2 * pi/180
+  long2 <- long2 * pi/180
+  
+  lat_dif <- sin((lat1 - lat2)/2) ^ 2
+  long_dif <- sin((long1 - long2)/2) ^ 2
+  
+  angle_scalar <- lat_dif + cos(lat1) * cos(lat2) * long_dif
+  distance <- 2*radius * asin(sqrt(angle_scalar))
+}  
+```
+
+```{r}
+#| label: spatial-join
+
+radius <- 1 #mi
+
+tb_master_plant <- tb_master %>% 
+  ungroup() %>%
+  distinct(plant_code, .keep_all = T) %>% 
+  select(plant_code, plant_name, x_coordinate, y_coordinate)
+
+tb_EIS_plant <- tb_EIS_pre_join %>% 
+  ungroup() %>% 
+  distinct(plant_code_eis, .keep_all = T) %>% 
+  select(plant_code_eis, plant_name, x_coordinate, y_coordinate)
+
+tb_cross_join <- tb_EIS_plant %>% 
+  cross_join(tb_master_plant, suffix = c("_eis", "_master"))
+
+tb_distance <- tb_cross_join %>% 
+  mutate(distance = get_distance(y_coordinate_master, x_coordinate_master,
+                                 y_coordinate_eis, x_coordinate_eis
+                                 )
+         ) %>% 
+  filter(distance <= radius) %>% 
+  group_by(plant_code) %>% 
+  slice_min(distance)
+
+# tb_distance %>% write_csv("output/master_EIS_match_facility.csv")
+```
+
+Only `r n_distinct(tb_distance$plant_code)`/`r n_distinct(tb_master$plant_code)` facilities have a matching EIS ID. Stopping analysis here for now. The best I can do is generate EIS IDs for `r round(n_distinct(tb_distance$plant_code) / n_distinct(tb_master$plant_code) * 100, 0)`% of the facilities. And even within those matching facilities, I am unable to unambiguously match units between the EIS and master inventories.
